@@ -29,8 +29,10 @@ def front_matter(doc: Doc) -> None:
     pic.alignment = WD_ALIGN_PARAGRAPH.CENTER
     pic.add_run().add_picture(str(IMG / "cover.png"), height=Cm(15))
     doc.p("Author: Álvaro Ayas", align="center", size=12, space_after=2)
-    doc.p("Research project (Treball de Recerca), Batxillerat", align="center", size=10,
-          color=MUTED, space_after=2)
+    doc.p("Research project (Treball de Recerca), Batxillerat — Institut Numància",
+          align="center", size=10, color=MUTED, space_after=2)
+    doc.p("**First prize, Premi Enginyer Pompeu Fabra 2026** — Escola d’Enginyeria, "
+          "Universitat Pompeu Fabra", align="center", size=10, color=ACCENT, space_after=2)
     doc.p("English edition, revised September 2026",
           align="center", size=10, color=MUTED)
 
@@ -624,6 +626,12 @@ def chapter_9_10(doc: Doc) -> None:
     doc.p("This experience has not only allowed me to value the research carried out, but "
           "has also given me a practical view of how academic knowledge can be applied to "
           "the management of the city.")
+    doc.p("**Recognition.** The project also won the first prize of the *Premi Enginyer "
+          "Pompeu Fabra* 2026, awarded by the School of Engineering of Pompeu Fabra University "
+          "to the best Batxillerat research projects in engineering and applied mathematics. "
+          "The finalists presented their work at the UPF Poblenou campus in June 2026, and "
+          "the prize includes a scholarship to study one of the School’s degrees free of "
+          "charge.")
     doc.image(IMG / "fig11_cgm1.png",
               "Photograph taken at Barcelona City Council’s Mobility Management Centre.", 12)
     doc.image(IMG / "fig12_cgm2.png",

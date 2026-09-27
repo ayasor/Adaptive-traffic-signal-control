@@ -2,6 +2,10 @@
 
 > **Design and simulation of a mathematical optimization algorithm for adaptive traffic lights.**
 
+🏆 **First prize, [Premi Enginyer Pompeu Fabra 2026](https://agora.xtec.cat/iesnumancia/portada/alvaro-ayas-guanya-el-premi-enginyer-pompeu-fabra-amb-el-seu-treball-de-recerca/)**
+— awarded by the School of Engineering of Universitat Pompeu Fabra to the best Batxillerat
+research projects in engineering and applied mathematics.
+
 This project presents the design, mathematical formulation, implementation, and evaluation of an **adaptive traffic light control system** capable of dynamically responding to real-time traffic conditions.
 
 The system prioritizes traffic light phases according to the number of vehicles and pedestrians waiting at an intersection, traffic saturation, estimated queue-clearing time, pedestrian waiting time, and safety constraints.

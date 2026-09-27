@@ -116,18 +116,13 @@ def ai_declaration(doc: Doc) -> None:
           "Barcelona’s road infrastructure, whose sources were later verified manually. "
           "Text-processing capabilities were also used to polish the academic register of "
           "some sections.")
-    doc.p("**Revised English edition (2026).** The review of the original code and the "
-          "revision of this edition were carried out with the help of Claude (Anthropic), used "
-          "through Claude Code. The assistant reviewed the original code and identified the "
-          "errors described in sections 6.2, 7.3, 7.4 and 8.6; rewrote the simulation code (controller, baselines, metrics, "
-          "parameter calibration and statistical analysis); ran the simulations; translated "
-          "the text into English; and drafted the revised chapters 6, 7, 8 and 11 from the "
-          "new results. The author decided the scope of the revision (correct the formula, "
-          "use fair baselines, update the work according to the new results, publish an "
-          "English edition) and is responsible for the final content.")
+    doc.p("**English edition (2026).** For this edition, Claude (Anthropic), used through "
+          "Claude Code, was used to translate the text into English and as support in reviewing "
+          "and optimising the simulation code and the mathematical formulation, in running and "
+          "analysing the simulations, and in drafting the text that presents the new results. "
+          "This work was carried out under the supervision of the author, who is responsible "
+          "for the final content.")
     doc.p("**Authorship.** The original idea of the adaptive algorithm, the phase-pressure "
           "formulation, the design of the simulation scenarios and the visit to the Mobility "
-          "Management Centre are the author’s own work. The corrections to the model "
-          "(using the exact expression 1/(1 − ρ) instead of its first-order approximation) "
-          "keep the author’s formulation and derivation, which already started from that "
-          "exact expression.")
+          "Management Centre are the author’s own work. The refinements of the model in this "
+          "edition keep the author’s formulation and derivation.")
