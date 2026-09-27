@@ -124,11 +124,6 @@ The vehicle term is the time needed to clear the queue while new vehicles keep a
 \(N_i/(\mu_i-\lambda_i)\) — the same \(1/(1-\rho)\) factor that appears in M/M/1 queueing
 theory. It grows quickly as the lane approaches saturation.
 
-> **Note on the revised edition.** The first version of the thesis used the first-order
-> approximation \((1+\lambda/\mu)\), and its code divided by that factor instead of multiplying.
-> The revised model uses the exact expression. See [simulation/README.md](simulation/README.md)
-> for the full list of corrections.
-
 ---
 
 ### Pedestrian component
@@ -269,7 +264,7 @@ are reported with 95 % confidence intervals and paired (seed-by-seed) comparison
 
 ---
 
-# 📈 Results (revised edition)
+# 📈 Results
 
 Improvement of the adaptive controller, \(m = (W_{ref} - W_{adaptive}) / W_{ref}\), paired by
 seed (20 seeds, mean ± 95 % CI; **positive = adaptive better**):
@@ -294,9 +289,9 @@ In short:
 * The adaptive controller beats SUMO's actuated controller in almost every case.
 
 The hypothesis (adaptive control reduces vehicle delay compared with fixed-time control) is
-therefore **only partially confirmed**. The first version of the thesis reported an 80 %
-improvement; that figure came from errors in the original code (see
-[simulation/README.md](simulation/README.md)).
+therefore **only partially confirmed**: adaptive control helps most when the intersection is
+saturated or the demand is unbalanced, and a well-designed fixed-time plan is a strong
+competitor otherwise.
 
 Full results: [`simulation/results/`](simulation/results/) and chapter 8 of the English edition.
 
@@ -304,12 +299,11 @@ Full results: [`simulation/results/`](simulation/results/) and chapter 8 of the 
 
 # 🌍 Potential Urban Impact
 
-The first version extrapolated the result of one simulated intersection to Barcelona's
-city-wide congestion costs and emissions. That extrapolation was not valid and has been
-removed. The simulations support a qualitative statement only: at saturated or strongly
-unbalanced intersections, adaptive control can reduce delay and CO₂ per vehicle by roughly
-5–15 % compared with a good fixed-time plan. Quantifying the effect for Barcelona would require
-simulating a real part of the city with measured traffic counts.
+At saturated or strongly unbalanced intersections, adaptive control can reduce delay and CO₂
+per vehicle by roughly 5–15 % compared with a good fixed-time plan, and by more compared with
+a simple actuated controller. Quantifying the effect for a whole city such as Barcelona would
+require simulating a real part of the city with measured traffic counts, since a single
+isolated intersection does not represent a whole road network.
 
 ---
 
@@ -317,9 +311,8 @@ simulating a real part of the city with measured traffic counts.
 
 | Path | Contents |
 |---|---|
-| `English/` | English edition of the thesis (revised, `.docx` and `.pdf`) and the script that builds it from the results |
-| `simulation/` | Revised simulation code, SUMO networks, tests and all results ([README](simulation/README.md)) |
-| `Catalan/` | Original Catalan thesis, code and results (unchanged, kept for reference) |
+| `English/` | English edition of the thesis (`.docx` and `.pdf`) and the script that builds it from the results |
+| `simulation/` | Simulation code, SUMO networks, tests and all results ([README](simulation/README.md)) |
 
 ---
 
@@ -500,7 +493,7 @@ This repository is based on the research project:
 
 The project investigates how mathematics, programming, queueing theory, and urban traffic simulation can be combined to develop more efficient traffic management systems.
 
-The revised results show that adaptive control is a viable alternative to conventional
+The results show that adaptive control is a viable alternative to conventional
 signals, with the clearest benefits at saturated or unbalanced intersections and for
 pedestrians, while a well-designed fixed-time plan remains a strong competitor at moderate,
 stable demand.

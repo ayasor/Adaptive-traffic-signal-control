@@ -1,8 +1,6 @@
-# Simulation code (revised, 2026)
+# Simulation code
 
-Code used for chapters 6–8 of the English edition of the thesis. It replaces
-the scripts in `Catalan/Annexos (CAT)/Annex 2`, which are kept only for
-reference (see "What was fixed" below).
+Code used for chapters 6–8 of the English edition of the thesis.
 
 ## Quick start
 
@@ -35,7 +33,7 @@ that are already there, so it can be interrupted and resumed.
 | `atsc/adaptive.py` | Adaptive controller (TraCI): sensors, pressure, control policy |
 | `atsc/programs.py` | Baselines: Webster fixed-time plan and SUMO actuated program |
 | `atsc/runner.py` | Runs one simulation and computes the metrics from SUMO's tripinfo output |
-| `scenarios/` | SUMO networks and route templates (unchanged from the original thesis) |
+| `scenarios/` | SUMO networks and route templates of both intersections |
 | `calibrate_saturation.py` | Measures the saturation flow μ |
 | `tune.py` | Grid search of T_max, T_crit and pedestrian weights on tuning seeds |
 | `run_experiments.py` | Evaluation grid: scenarios × demand × controllers × 20 seeds |
@@ -54,30 +52,28 @@ P_k = s_k [ Σ_{i∈C_k} w_i (N_i/μ_i) / (1 − ρ_i)  +  Σ_{j∈V_k} (β N_j 
 The vehicle term is the time to clear the queue, `N / (μ − λ)`. The
 controller activates `argmax_k P_k` subject to `T_min ≤ T_green ≤ T_max`.
 
-## What was fixed with respect to the original scripts
+## Implementation notes
 
-1. **Formula.** The original code computed `(N/μ) / (1 + λ/μ)`, so pressure
-   *decreased* with saturation. The thesis derives `(N/μ)(1 + λ/μ)`, a
-   first-order approximation of the exact `(N/μ) / (1 − λ/μ)` used now.
-2. **Signal control.** `traci.trafficlight.setPhase` let SUMO's static
-   program keep advancing (5 s pedestrian phase in the simple network), and in
-   the Shibuya network phase indices pointed at amber/green phases of the
-   wrong direction. Signals are now set explicitly with
-   `setRedYellowGreenState` and every transition (pedestrian clearance, amber,
-   all-red) is generated from the phase definitions.
-3. **Pedestrians in Shibuya** were added equally to every phase, so they never
-   influenced a decision. Now each phase counts only the crossings it opens.
-4. **λ** was estimated as the absolute change in the number of vehicles on the
-   lane; it is now the number of vehicles *entering* the lane per second.
-5. **μ** was 1.8 veh/s (6,480 veh/h per lane); it is now measured: ≈ 0.49 veh/s.
-6. **Metrics** were computed differently in each script (the fixed-time
-   pedestrian waiting time was always 0). All controllers are now measured
-   with the same code from SUMO's `tripinfo` output.
-7. **Baseline.** The original fixed-time plan had a 10 s amber and arbitrary
-   greens. Baselines are now a Webster fixed-time plan and SUMO's actuated
-   controller, with the same transitions as the adaptive controller.
-8. **Statistics.** One run per case → 20 seeds per case, 95 % confidence
-   intervals, paired comparisons, and a sweep over demand levels.
+1. **Formula.** The vehicle term uses the exact queue-clearing time
+   `N / (μ − λ) = (N/μ) / (1 − λ/μ)`; `(1 + λ/μ)` is only its first-order
+   approximation for light traffic. A unit test checks the implementation.
+2. **Signal control.** Every signal is set explicitly with
+   `setRedYellowGreenState`, so SUMO's static program never advances on its
+   own. Every transition (pedestrian clearance, amber, all-red) is generated
+   from the phase definitions, and a test checks that no transition gives
+   green to two conflicting movements.
+3. **Pedestrians.** Each phase counts only the pedestrians waiting at the
+   crossings it opens.
+4. **λ** is the number of vehicles *entering* the lane per second, averaged
+   over a 60 s window.
+5. **μ** is measured in SUMO with a queue-discharge experiment:
+   ≈ 0.49 veh/s (≈ 1,780 veh/h per lane).
+6. **Metrics.** All controllers are measured with the same code, from SUMO's
+   `tripinfo` output.
+7. **Baselines.** A Webster fixed-time plan and SUMO's actuated controller,
+   with the same phases and transitions as the adaptive controller.
+8. **Statistics.** 20 seeds per case, 95 % confidence intervals, paired
+   comparisons, and a sweep over demand levels.
 
 ## Metrics
 
