@@ -6,6 +6,11 @@
 — awarded by the School of Engineering of Universitat Pompeu Fabra to the best Batxillerat
 research projects in engineering and applied mathematics.
 
+![Adaptive traffic light running in SUMO: vehicles, pedestrians and the pressure of each phase](docs/shibuya-adaptive.gif)
+
+*The adaptive controller running in SUMO at the Shibuya-type junction (real simulation; the bars
+show the pressure of each phase). Generated with [`simulation/record_gif.py`](simulation/record_gif.py).*
+
 This project presents the design, mathematical formulation, implementation, and evaluation of an **adaptive traffic light control system** capable of dynamically responding to real-time traffic conditions.
 
 The system prioritizes traffic light phases according to the number of vehicles and pedestrians waiting at an intersection, traffic saturation, estimated queue-clearing time, pedestrian waiting time, and safety constraints.
@@ -292,6 +297,10 @@ The hypothesis (adaptive control reduces vehicle delay compared with fixed-time 
 therefore **only partially confirmed**: adaptive control helps most when the intersection is
 saturated or the demand is unbalanced, and a well-designed fixed-time plan is a strong
 competitor otherwise.
+
+![Shibuya-type junction: mean vehicle delay and vehicles served vs demand for the three controllers](docs/shibuya-results.png)
+
+*Shibuya-type junction, mean of 20 seeds (shaded band = 95 % confidence interval).*
 
 Full results: [`simulation/results/`](simulation/results/) and chapter 8 of the English edition.
 
