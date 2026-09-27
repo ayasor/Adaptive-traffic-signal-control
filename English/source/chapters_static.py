@@ -31,7 +31,7 @@ def front_matter(doc: Doc) -> None:
     doc.p("Author: Álvaro Ayas", align="center", size=12, space_after=2)
     doc.p("Research project (Treball de Recerca), Batxillerat", align="center", size=10,
           color=MUTED, space_after=2)
-    doc.p("English edition, revised September 2026 (see “About this edition”)",
+    doc.p("English edition, revised September 2026",
           align="center", size=10, color=MUTED)
 
     doc.page_break()
@@ -58,50 +58,6 @@ def front_matter(doc: Doc) -> None:
     doc.p("And finally, to my friends, for always being there, for encouraging me, listening "
           "to me and helping me disconnect when I needed it most.")
     doc.p("To all of you, thank you with all my heart.")
-
-
-def about_this_edition(doc: Doc, facts: dict) -> None:
-    doc.h("About this edition", 1, page_break=True)
-    doc.p("This is an English translation of the research project originally written in "
-          "Catalan (*Optimització del trànsit urbà: disseny i simulació d’un algoritme "
-          "matemàtic per a semàfors adaptatius*). It is not only a translation: after the "
-          "project was submitted, a review of the simulation code found several errors that "
-          "affected the results. Chapters 6, 7, 8 and 11 have therefore been revised, all "
-          "simulations have been run again, and the conclusions have been updated to match "
-          "the new results. The original Catalan version is kept unchanged in the repository "
-          "for reference.")
-    doc.p("**What changed and why:**")
-    doc.bullets([
-        "**The code did not implement the formula of the thesis.** The thesis multiplies the "
-        "queue term by (1 + λ/μ), so pressure grows with saturation; the original code "
-        "divided by it, so pressure *fell* when more vehicles were arriving. The revised "
-        "model uses the exact queue-clearing time N/(μ − λ), of which (1 + λ/μ) was only a "
-        "first-order approximation (section 6.2).",
-        "**The traffic lights did not do what the algorithm decided.** The original scripts "
-        "used SUMO’s `setPhase`, which lets SUMO’s built-in program keep advancing on its "
-        "own; in the Shibuya intersection the phase numbers also pointed to the wrong "
-        "signals (an amber phase was treated as a green one). The new controller sets every "
-        "signal explicitly and all transitions (pedestrian clearance, amber, all-red) are "
-        "generated from the phase definitions (section 7.3).",
-        "**The two models were measured differently.** The fixed-time and adaptive scripts "
-        "used different definitions of “waiting”, so the 80 % improvement reported in the "
-        "original version compared two different quantities. All controllers are now "
-        "measured with the same SUMO output (section 8.1).",
-        "**The baseline was not a fair reference.** The original fixed-time plan used a "
-        "10-second amber and arbitrary green times. The revised study compares against a "
-        "fixed-time plan designed with Webster’s method and against SUMO’s actuated "
-        "controller (section 7.4).",
-        "**One run per case.** Each result is now the mean of "
-        f"{facts['seeds']} simulations with different random seeds, with 95 % confidence "
-        "intervals, over a range of demand levels.",
-        "**The extrapolation to Barcelona** multiplied city-wide figures by the improvement "
-        "at one simulated intersection. It has been replaced by emissions computed directly "
-        "in the simulation and a qualitative discussion (section 8.5).",
-    ])
-    doc.p("The new code, the SUMO networks and every raw result are published in the "
-          "project repository (folder `simulation/`), so that any number in this document can "
-          "be reproduced. The revision was carried out with the help of an AI assistant; see "
-          "the declaration on the use of generative AI at the end of the document.")
 
 
 def abstract(doc: Doc, abstract_results: str) -> None:

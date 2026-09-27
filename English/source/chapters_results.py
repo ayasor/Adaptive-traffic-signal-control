@@ -374,7 +374,8 @@ def _original_vs_revised(doc: Doc) -> None:
     ], caption="Improvement m of the adaptive controller at the original demand: original "
                "version against revised version (positive = adaptive better).",
         widths_cm=[5.0, 5.2, 5.4])
-    doc.p("The differences are explained by the errors described in “About this edition”: "
+    doc.p("The differences are explained by errors in the original code and method, "
+          "corrected in this edition (sections 6.2, 7.3, 7.4 and 8.1): "
           "the original fixed-time and adaptive scripts did not measure the same quantity; "
           "the fixed-time reference used a 10-second amber and arbitrary green times; the "
           "adaptive traffic lights did not actually follow the algorithm’s decisions; and "

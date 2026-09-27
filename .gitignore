@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# LibreOffice / Word lock files
+.~lock.*#
+~$*
+
+# SUMO scratch output
+*.tripinfo.xml
+*.stats.xml

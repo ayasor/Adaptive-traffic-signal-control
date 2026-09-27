@@ -22,7 +22,7 @@ import results_data as R  # noqa: E402
 from chapters_end import ai_declaration, annexes, bibliography  # noqa: E402
 from chapters_model import chapter_6, chapter_7  # noqa: E402
 from chapters_results import abstract_results, chapter_8, chapter_11  # noqa: E402
-from chapters_static import (about_this_edition, abstract, chapter_1_2, chapter_3,  # noqa: E402
+from chapters_static import (abstract, chapter_1_2, chapter_3,  # noqa: E402
                              chapter_4_5, chapter_9_10, contents, front_matter)
 from docbuilder import Doc  # noqa: E402
 
@@ -151,7 +151,6 @@ def heading_pages(pdf: Path, headings: list[tuple[int, str]], first_body_page: i
 def build(f: dict, toc_entries=None, toc_pages=None) -> Doc:
     doc = Doc()
     front_matter(doc)
-    about_this_edition(doc, f)
     abstract(doc, abstract_results())
     contents(doc, toc_entries or [(1, "x")] * 40, toc_pages or {})
     body = doc.new_section()
@@ -178,7 +177,7 @@ def main() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         entries = [h for h in first.headings
-                   if h[1] not in ("Acknowledgements", "About this edition", "Abstract")]
+                   if h[1] not in ("Acknowledgements", "Abstract")]
         probe = build(f, entries, {})
         probe.save(tmp / "probe.docx")
         pages = heading_pages(render_pdf(tmp / "probe.docx", tmp), entries,
