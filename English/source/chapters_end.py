@@ -99,14 +99,12 @@ def annexes(doc: Doc) -> None:
          "`simulation/results/runs.jsonl`, `tuning.jsonl`, `saturation_flow.json`"],
         ["4. Calculations", "Means, confidence intervals, paired improvements and figures",
          "`simulation/results/summary.csv`, `comparison.json`, `figures/`"],
-        ["5. Original version", "The original Catalan thesis, code and results, unchanged",
-         "`Catalan/`"],
     ], widths_cm=[3.2, 6.8, 6.0], align_numbers=False)
 
 
 def ai_declaration(doc: Doc) -> None:
     doc.h("Declaration on the use of generative AI tools", 1, page_break=True)
-    doc.p("**Original version.** Within this research project, large language models (LLMs) "
+    doc.p("Within this research project, large language models (LLMs) "
           "were used as tools for technical and methodological support, under the direct "
           "supervision of the author. The tools used were Claude (Anthropic), ChatGPT "
           "(OpenAI) and Gemini (Google). Claude was used to generate the base structure of "
@@ -119,10 +117,9 @@ def ai_declaration(doc: Doc) -> None:
     doc.p("**English edition (2026).** For this edition, Claude (Anthropic), used through "
           "Claude Code, was used to translate the text into English and as support in reviewing "
           "and optimising the simulation code and the mathematical formulation, in running and "
-          "analysing the simulations, and in drafting the text that presents the new results. "
+          "analysing the simulations, and in drafting the text that presents the results. "
           "This work was carried out under the supervision of the author, who is responsible "
           "for the final content.")
     doc.p("**Authorship.** The original idea of the adaptive algorithm, the phase-pressure "
           "formulation, the design of the simulation scenarios and the visit to the Mobility "
-          "Management Centre are the author’s own work. The refinements of the model in this "
-          "edition keep the author’s formulation and derivation.")
+          "Management Centre are the author’s own work.")

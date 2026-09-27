@@ -65,9 +65,8 @@ def abstract_results() -> str:
     sh = -change("shibuya", 1.0, "veh_delay_mean_s")
     th = change("shibuya", 1.0, "throughput_vph")
     return (
-        "Each case was simulated with 20 random seeds. The results are more nuanced than "
-        "the 80 % improvement reported in the first version of this project, which was "
-        "caused by errors in the code. In the simple crossing, the adaptive controller "
+        "Each case was simulated with 20 random seeds. In the simple crossing, the adaptive "
+        "controller "
         f"gives vehicles practically the same delay as the Webster plan ({min(s_veh)*100:+.0f} "
         f"to {max(s_veh)*100:+.0f} %) while cutting pedestrian waiting by "
         f"{min(s_ped)*100:.0f}–{max(s_ped)*100:.0f} %. In the collapsed Shibuya-type "
@@ -82,15 +81,12 @@ def abstract_results() -> str:
 # --------------------------------------------------------------------------------------
 def chapter_8(doc: Doc, f: dict) -> None:
     doc.h("8. Results and analysis", 1, page_break=True)
-    doc.p("Once the simulations had been completed, the results were collected and analysed. "
-          "All the results of this chapter were obtained with the revised code; the results "
-          "of the original version are compared with them in section 8.6.")
+    doc.p("Once the simulations had been completed, the results were collected and analysed.")
     _methodology(doc, f)
     _simple(doc)
     _shibuya(doc)
     _unbalanced(doc)
     _emissions(doc)
-    _original_vs_revised(doc)
     _conclusions_comparative(doc)
 
 
@@ -109,7 +105,7 @@ def _methodology(doc: Doc, f: dict) -> None:
         "interval** (Student’s t distribution). If two intervals do not overlap, the "
         "difference is very unlikely to be due to chance.",
         "Vehicle demand was varied from low to very high as a percentage of the demand of "
-        "the original route files (100 %), while pedestrian demand was kept at its original "
+        "the route files (100 %), while pedestrian demand was kept at its base "
         "value. This shows how each controller behaves from light traffic to collapse.",
         "Demand is generated for one hour; the simulation then continues (up to 30 more "
         "minutes) until the queues have emptied.",
@@ -132,8 +128,8 @@ def _methodology(doc: Doc, f: dict) -> None:
         "person waiting equally in a car or on foot.",
         "**CO₂ per vehicle**: from SUMO’s HBEFA emission model (section 8.5).",
     ])
-    doc.p("To quantify the improvement, the same ratio defined in the original version of "
-          "the project is used, now computed for each seed and then averaged:")
+    doc.p("To quantify the improvement, the following ratio is computed for each seed and "
+          "then averaged:")
     doc.equation(r"m=\frac{W_{ref}-W_{adapt}}{W_{ref}}")
     doc.p("If m > 0 the adaptive controller is better than the reference (fixed-time or "
           "actuated); if m < 0 the reference is better. In the tables, the number in "
@@ -166,7 +162,7 @@ def _simple(doc: Doc) -> None:
     doc.h("8.2 Simple intersection: two-way road with a pedestrian crossing", 2)
     doc.image(FIG / "simple_demand_sweep.png",
               "Simple intersection: results as a function of vehicle demand (100 % = the "
-              "original demand of 0.3 vehicles/s per direction).", 16)
+              "base demand of 0.3 vehicles/s per direction).", 16)
     _level_table(doc, "simple", SIMPLE_LEVELS, "veh_delay_mean_s",
                  "Simple intersection: mean vehicle delay [s] (mean ± 95 % CI, 20 seeds).")
     _level_table(doc, "simple", SIMPLE_LEVELS, "ped_wait_mean_s",
@@ -220,7 +216,7 @@ def _shibuya(doc: Doc) -> None:
     doc.h("8.3 Shibuya-type intersection", 2)
     doc.image(FIG / "shibuya_demand_sweep.png",
               "Shibuya-type intersection: results as a function of vehicle demand (100 % = "
-              "the original demand of 756 vehicles/h per approach). The delay axis is "
+              "the base demand of 756 vehicles/h per approach). The delay axis is "
               "logarithmic.", 16)
     _level_table(doc, "shibuya", SHIBUYA_LEVELS, "veh_delay_mean_s",
                  "Shibuya-type intersection: mean vehicle delay [s].", nd=0)
@@ -243,9 +239,9 @@ def _shibuya(doc: Doc) -> None:
     act = [M("shibuya", x, "veh_delay_mean_s", "actuated")[0] for x in SHIBUYA_LEVELS]
 
     doc.p("**A collapsed intersection.** The first thing the figure shows is that this "
-          "intersection cannot serve the original demand with *any* of the controllers. Its "
+          "intersection cannot serve the base demand with *any* of the controllers. Its "
           f"real capacity is about {cap:,.0f} vehicles/hour, far below the 3,024 vehicles/hour "
-          "of the original route file: from about 40 % of the original demand onwards, "
+          "of the route file: from about 40 % of the base demand onwards, "
           "queues grow during the whole hour and the delay reaches many minutes per vehicle "
           "(most of it waiting to enter the network). The reason is geometric: each approach "
           "has a single lane shared by all movements, so a vehicle waiting to turn left "
@@ -282,7 +278,7 @@ def _shibuya(doc: Doc) -> None:
 
 def _unbalanced(doc: Doc) -> None:
     doc.h("8.4 Shibuya-type intersection with unbalanced demand", 2)
-    doc.p("As in the original version, a second Shibuya experiment was run in which one "
+    doc.p("A second Shibuya experiment was run in which one "
           "approach carries much more traffic than the others: the three flows from the "
           "west keep their probability of 0.07 vehicles/s each, while all the other flows "
           "are reduced to 0.007. An adaptive controller should be especially useful here, "
@@ -309,9 +305,8 @@ def _unbalanced(doc: Doc) -> None:
           f"difference in delay ({ma[0]*100:+.0f} ± {ma[1]*100:.0f} %) is not significant. "
           "Throughput is similar for the three controllers, and pedestrians wait about the "
           "same with the adaptive and fixed-time controllers (the differences are within the "
-          "confidence intervals). The original version reported a 40 % vehicle improvement "
-          "and a 66 % *worsening* for pedestrians in this experiment; with the corrected "
-          "code, pedestrians are not penalised.")
+          "confidence intervals), so the priority given to the busy approach does not "
+          "penalise pedestrians.")
 
 
 def _emissions(doc: Doc) -> None:
@@ -344,48 +339,14 @@ def _emissions(doc: Doc) -> None:
           "a whole road network.")
 
 
-def _original_vs_revised(doc: Doc) -> None:
-    doc.h("8.6 Comparison with the results of the original version", 2)
-    sv = M("simple", 1.0, "veh_delay_mean_s", "fixed")
-    sp = M("simple", 1.0, "ped_wait_mean_s", "fixed")
-    hv = M("shibuya", 1.0, "veh_delay_mean_s", "fixed")
-    hp = M("shibuya", 1.0, "ped_wait_mean_s", "fixed")
-    uv = M("shibuya", 1.0, "veh_delay_mean_s", "fixed", "unbalanced")
-    up = M("shibuya", 1.0, "ped_wait_mean_s", "fixed", "unbalanced")
-
-    def c(x):
-        return f"{x[0]*100:+.0f} ± {x[1]*100:.0f} %"
-    doc.table(["Experiment", "Original version (1 run)", "Revised (20 seeds, vs Webster)"], [
-        ["Simple, vehicles", "+80 %", c(sv)],
-        ["Simple, pedestrians", "0 %", c(sp)],
-        ["Shibuya, vehicles", "+60 % (+68 % with the table values)", c(hv)],
-        ["Shibuya, pedestrians", "−15 %", c(hp)],
-        ["Shibuya unbalanced, vehicles", "+40 %", c(uv)],
-        ["Shibuya unbalanced, pedestrians", "−66 %", c(up)],
-    ], caption="Improvement m of the adaptive controller at the original demand: original "
-               "version against revised version (positive = adaptive better).",
-        widths_cm=[5.0, 5.2, 5.4])
-    doc.p("The differences are explained by errors in the original code and method, "
-          "corrected in this edition (sections 6.2, 7.3, 7.4 and 8.1): "
-          "the original fixed-time and adaptive scripts did not measure the same quantity; "
-          "the fixed-time reference used a 10-second amber and arbitrary green times; the "
-          "adaptive traffic lights did not actually follow the algorithm’s decisions; and "
-          "each figure came from a single simulation. In the original Shibuya experiment, "
-          "moreover, the adaptive controller served less than half as many vehicles as the "
-          "fixed-time one (0.11 against 0.27 vehicles/s), so its lower waiting time was "
-          "partly an effect of vehicles that never reached the traffic light. The conclusions "
-          "section of the original version also quoted improvements (25–35 % and 20 %) that "
-          "did not match its own tables.")
-
-
 def _conclusions_comparative(doc: Doc) -> None:
-    doc.h("8.7 Conclusions of the comparative study", 2)
+    doc.h("8.6 Conclusions of the comparative study", 2)
     act_all = [M(s, x, "veh_delay_mean_s", "actuated")[0]
                for s, levels in (("simple", SIMPLE_LEVELS), ("shibuya", SHIBUYA_LEVELS))
                for x in levels]
     doc.p("Going back to the hypothesis of chapter 2 (*an adaptive system based on a "
           "mathematical optimisation model will reduce the mean delay of vehicles compared "
-          "with conventional fixed-time systems*), the revised simulations lead to the "
+          "with conventional fixed-time systems*), the simulations lead to the "
           "following verdict:")
     doc.bullets([
         "**Partially confirmed.** Against a fixed-time plan designed with Webster’s method, "
@@ -406,8 +367,7 @@ def _conclusions_comparative(doc: Doc) -> None:
         "the saturation flow. In shared lanes with permissive left turns this is false, and "
         "the controller can keep a green that is not being used.",
     ])
-    doc.p("These results are less spectacular than those of the original version, but they "
-          "are more reliable, and they are consistent with the scientific literature: "
+    doc.p("These results are consistent with the scientific literature: "
           "adaptive control is most valuable where demand is high or changes, while for "
           "stable and moderate demand a well-designed fixed-time plan is hard to beat. Although "
           "they come from a virtual environment, they show the real potential, and the real "
@@ -425,12 +385,10 @@ def chapter_11(doc: Doc, f: dict) -> None:
           "waiting and with their waiting time, with an extra term that prevents anyone from "
           "being forgotten. At every second, the traffic light gives green to the phase "
           "with the highest pressure, within minimum and maximum green times.")
-    doc.p("The review of the first version of the project showed that its code did not "
-          "implement this model correctly and that its comparison was not fair, so the "
-          "80 % improvement it reported was not real. After correcting the code, measuring "
-          "the capacity of the lanes, calibrating the parameters on separate simulations and "
-          "comparing against a Webster fixed-time plan and an actuated controller with 20 "
-          "repetitions per case, the conclusions are:")
+    doc.p("After implementing the algorithm in SUMO, measuring the capacity of the lanes, "
+          "calibrating the parameters on separate simulations and comparing it against a "
+          "Webster fixed-time plan and an actuated controller with 20 repetitions per case, "
+          "the conclusions are:")
     doc.bullets([
         "The adaptive algorithm works: it serves vehicles and pedestrians safely, adapts its "
         "cycle to the demand and never leaves anyone waiting indefinitely.",

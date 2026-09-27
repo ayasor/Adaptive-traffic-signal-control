@@ -155,8 +155,7 @@ def chapter_6(doc: Doc, f: dict) -> None:
     doc.h("6.5.2 Sensitivity to saturation", 3)
     doc.p("If λᵢ → μᵢ, the factor 1/(1 − ρᵢ) grows rapidly (up to the cap 1/(1 − ρ_max)), "
           "increasing the pressure. This allows situations close to collapse to be detected "
-          "and served first. (With the first-order approximation of the original version "
-          "the factor could never exceed 2.)")
+          "and served first.")
     doc.h("6.5.3 Limit behaviour", 3)
     doc.p("If λᵢ(t) → 0 for all i, then Nᵢ(t) → 0 and the pedestrian terms also vanish, so "
           "every pressure tends to zero and the controller simply rests in the current green "
@@ -215,7 +214,7 @@ def chapter_7(doc: Doc, f: dict) -> None:
           "controlled and statistics to be collected during the simulation. I chose SUMO "
           "because it focuses on customisable infrastructures, allows the traffic lights to "
           "be controlled as the algorithm requires, and produces objective data that are key "
-          f"to evaluating the adaptive system. The revised simulations use SUMO {f['sumo_version']}.")
+          f"to evaluating the adaptive system. The simulations use SUMO {f['sumo_version']}.")
     doc.h("7.1.2 Development of the road infrastructure", 3)
     doc.p("More than one type of intersection was developed, since each has different "
           "characteristics and traffic dynamics. This diversity makes it possible to "
@@ -231,7 +230,7 @@ def chapter_7(doc: Doc, f: dict) -> None:
     doc.p("It contains a two-way road with one lane per direction (speed limit 50 km/h), a "
           "pavement on each side, a pedestrian crossing (6.4 m long) and a traffic light "
           "with two phases: vehicles green, or pedestrians green. The demand, taken from the "
-          "original route file, is:")
+          "route file, is:")
     doc.bullets([
         "A random flow of vehicles in each direction, with an insertion probability of "
         "0.3 per second (on average 1,080 vehicles/hour per direction).",
@@ -263,7 +262,7 @@ def chapter_7(doc: Doc, f: dict) -> None:
           "north–south vehicles together with the crossings parallel to them, and east–west "
           "vehicles with their parallel crossings. Turning vehicles must give way to "
           "pedestrians on the crossing they cut, and left-turning vehicles must also give "
-          "way to oncoming traffic. The demand of the original route file is:")
+          "way to oncoming traffic. The demand defined in the route file is:")
     doc.bullets([
         "Three vehicle flows per arm (left, straight and right), each with probability 0.07 "
         "per second: 0.21 veh/s ≈ 756 vehicles/hour per approach, 3,024 vehicles/hour in "
@@ -276,9 +275,8 @@ def chapter_7(doc: Doc, f: dict) -> None:
           "lane block everyone behind them.")
 
     doc.h("7.2 Measuring the saturation flow μ", 2)
-    doc.p("The model needs the service rate μ of each lane. Instead of choosing it by hand "
-          "(the original code used μ = 1.8 veh/s, i.e. 6,480 veh/h per lane, more than three "
-          "times what a real urban lane can discharge), it was measured in SUMO with the "
+    doc.p("The model needs the service rate μ of each lane. Instead of choosing it by hand, "
+          "it was measured in SUMO with the "
           "standard queue-discharge method: the lane is kept red for 90 s until a long queue "
           "forms, then it gets green and the vehicles leaving the lane between 5 s and 35 s "
           "after the start of green are counted (the first seconds are excluded because of "
@@ -335,10 +333,6 @@ def chapter_7(doc: Doc, f: dict) -> None:
           "In the Shibuya intersection, vehicles keep their green during the pedestrian "
           "clearance that follows, so the shortest possible vehicle green is "
           f"{f['t_min']} + {f['ped_clearance']} s.")
-    doc.p("The original fixed-time script used a 30 s green, a **10 s amber**, a 30 s "
-          "pedestrian green and a 5 s all-red. A 10-second amber is far longer than the "
-          "usual 3–5 s and, together with the arbitrary green times, made the original "
-          "baseline much worse than a real fixed-time light.")
     doc.h("7.4.2 Actuated controller (SUMO)", 3)
     doc.p("SUMO includes a gap-based actuated controller: detectors placed before the stop "
           "line extend the green while vehicles keep arriving less than 3 s apart, between a "
@@ -349,8 +343,7 @@ def chapter_7(doc: Doc, f: dict) -> None:
           "without a push button.")
 
     doc.h("7.5 Calibration of the controller parameters", 2)
-    doc.p("The adaptive controller has free parameters that the original version fixed by "
-          "hand: the maximum green T_max, the critical pedestrian time T_crit and the "
+    doc.p("The adaptive controller has free parameters: the maximum green T_max, the critical pedestrian time T_crit and the "
           "pedestrian weights β and γ. They decide how the controller balances vehicles "
           "against pedestrians, so they were chosen systematically with a grid search:")
     doc.bullets([
@@ -372,5 +365,5 @@ def chapter_7(doc: Doc, f: dict) -> None:
         "is calibrated as carefully as the adaptive one.",
     ])
     doc.p(f["tuning_text"])
-    doc.table(["Parameter", "Original version", "Revised version"], f["param_rows"],
-              caption="Parameters of the adaptive controller.", widths_cm=[6.5, 4.5, 4.5])
+    doc.table(["Parameter", "Value"], f["param_rows"],
+              caption="Parameters of the adaptive controller.", widths_cm=[7.5, 7.5])

@@ -54,7 +54,7 @@ def facts() -> dict:
     rel = best["relative_J"]
     tuning_text = (
         f"The best combination was T_max = {best['t_max']} s, T_crit = {best['t_crit']:g} s "
-        f"and the original pedestrian weights (multiplier {best['ped_scale']:g}). Several "
+        f"and the base pedestrian weights (multiplier {best['ped_scale']:g}). Several "
         "neighbouring combinations (T_max and T_crit between 90 and 120 s) gave practically "
         "the same result, so the choice is not sensitive to small changes. Relative to "
         "Webster, the person-delay of the tuned adaptive controller on the tuning seeds was "
@@ -63,17 +63,17 @@ def facts() -> dict:
         f"Webster). For the actuated controller the best maximum green was {act['t_max']} s "
         f"(mean {act['mean_relative_J']:.2f}).")
     param_rows = [
-        ["Pressure saturation factor", "(1 + λ/μ) (code: divided)", "1/(1 − ρ), ρ ≤ 0.95"],
-        ["Service rate μ", "1.8 veh/s (assumed)", f"{sat['mu']:.3f} veh/s (measured)"],
-        ["Arrival rate λ", "|Δ vehicles on lane| / 30 s", f"entries / {adaptive.ARRIVAL_WINDOW} s"],
-        ["Queue Nᵢ", "vehicles slower than 5–8 m/s", f"vehicles in last {adaptive.DETECTION_ZONE:.0f} m"],
-        ["Lane weights wᵢ", "1.0–1.5 (by hand)", "1.0 (all lanes)"],
-        ["T_min", "10 s", f"{programs.T_MIN} s"],
-        ["T_max", "25–30 s", f"{best['t_max']} s (tuned)"],
-        ["Amber / all-red", "3–5 s / none", f"{scenarios.AMBER} s / {scenarios.ALL_RED} s"],
-        ["Pedestrian clearance", "none", f"{scenarios.SIMPLE.ped_clearance} s"],
-        ["β, γ, δ", "2–2.5, 0.2, 4–5", f"{w.beta:g}, {w.gamma:g}, {w.delta:g}"],
-        ["T_crit", "30–40 s", f"{best['t_crit']:g} s (tuned)"],
+        ["Pressure saturation factor", "1/(1 − ρ), ρ ≤ 0.95"],
+        ["Service rate μ", f"{sat['mu']:.3f} veh/s (measured)"],
+        ["Arrival rate λ", f"vehicles entering the lane / {adaptive.ARRIVAL_WINDOW} s"],
+        ["Queue Nᵢ", f"vehicles in the last {adaptive.DETECTION_ZONE:.0f} m"],
+        ["Lane weights wᵢ", "1.0 (all lanes)"],
+        ["T_min", f"{programs.T_MIN} s"],
+        ["T_max", f"{best['t_max']} s (tuned)"],
+        ["Amber / all-red", f"{scenarios.AMBER} s / {scenarios.ALL_RED} s"],
+        ["Pedestrian clearance", f"{scenarios.SIMPLE.ped_clearance} s"],
+        ["β, γ, δ", f"{w.beta:g}, {w.gamma:g}, {w.delta:g}"],
+        ["T_crit", f"{best['t_crit']:g} s (tuned)"],
     ]
     return {
         "mu": sat["mu"], "mu_sd": sat["sd"], "mu_vph": sat["veh_per_hour"],

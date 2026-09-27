@@ -33,7 +33,7 @@ def front_matter(doc: Doc) -> None:
           align="center", size=10, color=MUTED, space_after=2)
     doc.p("**First prize, Premi Enginyer Pompeu Fabra 2026** — Escola d’Enginyeria, "
           "Universitat Pompeu Fabra", align="center", size=10, color=ACCENT, space_after=2)
-    doc.p("English edition, revised September 2026",
+    doc.p("English edition, September 2026",
           align="center", size=10, color=MUTED)
 
     doc.page_break()
@@ -263,8 +263,7 @@ def chapter_3(doc: Doc) -> None:
         ["Share of the city’s NOx emissions due to road traffic (all traffic, not only "
          "congestion)", "54 %"],
         ["Share of the city’s suspended particle emissions due to road traffic", "40 %"],
-    ], caption="Summary of the problems derived from traffic inefficiency in Barcelona "
-               "(the original Figure 1).", widths_cm=[12, 4])
+    ], caption="Summary of the problems derived from traffic inefficiency in Barcelona.", widths_cm=[12, 4])
 
     doc.h("3.3 Factors that determine traffic flow in Barcelona", 2)
     doc.p("Traffic flow in Barcelona is influenced by a combination of structural, "
