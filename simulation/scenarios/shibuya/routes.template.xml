@@ -1,0 +1,38 @@
+<!--  generated on 2025-08-28 15:45:31 by Eclipse SUMO netedit Version 1.24.0
+ -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+<!--  Vehicles, persons and containers (sorted by depart)  -->
+<flow id="f_0" begin="0.00" from="E2" to="-E3" end="3600.00" probability="0.07"/>
+<flow id="f_1" begin="0.00" from="E2" to="E2.200" end="3600.00" probability="0.07"/>
+<flow id="f_10" begin="0.00" from="E3" to="E3.200" end="3600.00" probability="0.07"/>
+<flow id="f_11" begin="0.00" from="E3" to="E2.200" end="3600.00" probability="0.07"/>
+<flow id="f_2" begin="0.00" from="E2" to="E3.200" end="3600.00" probability="0.07"/>
+<flow id="f_3" begin="0.00" from="-E3.200" to="-E2" end="3600.00" probability="0.07"/>
+<flow id="f_4" begin="0.00" from="-E3.200" to="-E3" end="3600.00" probability="0.07"/>
+<flow id="f_5" begin="0.00" from="-E3.200" to="E2.200" end="3600.00" probability="0.07"/>
+<flow id="f_6" begin="0.00" from="-E2.200" to="E3.200" end="3600.00" probability="0.07"/>
+<flow id="f_7" begin="0.00" from="-E2.200" to="-E2" end="3600.00" probability="0.07"/>
+<flow id="f_8" begin="0.00" from="-E2.200" to="-E3" end="3600.00" probability="0.07"/>
+<flow id="f_9" begin="0.00" from="E3" to="-E2" end="3600.00" probability="0.07"/>
+<personFlow id="pf_0" begin="0.00" end="3600.00" probability="0.07">
+<personTrip from="-E2" to="E3"/>
+</personFlow>
+<personFlow id="pf_1" begin="0.00" end="3600.00" probability="0.07">
+<personTrip from="-E2" to="-E3"/>
+</personFlow>
+<personFlow id="pf_2" begin="0.00" end="3600.00" probability="0.07">
+<personTrip from="-E2" to="-E2.200"/>
+</personFlow>
+<personFlow id="pf_3" begin="0.00" end="3600.00" probability="0.07">
+<personTrip from="-E2" to="E2.200"/>
+</personFlow>
+<personFlow id="pf_4" begin="0.00" end="3600.00" probability="0.07">
+<personTrip from="-E2" to="E2"/>
+</personFlow>
+<personFlow id="pf_5" begin="0.00" end="3600.00" probability="0.07">
+<personTrip from="-E2" to="E3.200"/>
+</personFlow>
+<personFlow id="pf_6" begin="0.00" end="3600.00" probability="0.07">
+<personTrip from="-E2" to="-E3.200"/>
+</personFlow>
+</routes>

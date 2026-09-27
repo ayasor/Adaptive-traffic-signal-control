@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Ayas Soria"
+  given-names: "Alvaro"
+  orcid: ""
+  
+title: "Adaptive-traffic-signal-control"
+version: 1.0.0
+doi: 10.5281/zenodo.1234
+date-released: 2026-09-27
+url: "https://github.com/ayasor/Adaptive-traffic-signal-control"
