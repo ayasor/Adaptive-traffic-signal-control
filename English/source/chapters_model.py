@@ -91,20 +91,9 @@ def chapter_6(doc: Doc, f: dict) -> None:
           "is L = ρ/(1 − ρ) and the mean time in the system is W = 1/(μ − λ) (Little’s law). "
           "In both cases, the closer the arrivals get to the service capacity, the faster "
           "the delay grows, and it tends to infinity as ρ → 1.")
-    doc.note("Correction with respect to the original version",
-             "The original version of this project expanded 1/(1 − ρ) as a geometric series, "
-             "1/(1 − ρ) = 1 + ρ + ρ² + …, and kept only the first two terms, (1 + ρ). That "
-             "approximation is only accurate when ρ ≪ 1, i.e. when there is little traffic, "
-             "which is exactly the opposite of the situations in which the controller must "
-             "react (for ρ = 0.8 the exact factor is 5, the approximation gives 1.8). The "
-             "revised model therefore uses the exact expression. To keep the pressure finite "
-             "when the measured arrivals approach or exceed the capacity, ρ is capped at "
-             f"ρ_max = {f['rho_max']}, which limits the factor to "
-             f"{1/(1-f['rho_max']):.0f}.\n\n"
-             "In addition, the original code *divided* by (1 + λ/μ) instead of multiplying, "
-             "so the implemented pressure decreased with saturation, contradicting "
-             "section 6.5.2. The new code implements exactly the equation above, and a unit "
-             "test checks it (for N = 10, μ = 0.5 and λ = 0.25 the pressure must be 40 s).")
+    doc.p("To keep the pressure finite when the measured arrivals approach or exceed the "
+          f"capacity, ρ is capped at ρ_max = {f['rho_max']}, which limits the factor to "
+          f"{1/(1-f['rho_max']):.0f}.")
     doc.p("With this form the vehicle term has a clear physical meaning: it is measured in "
           "seconds and is the (weighted) time the phase would need to serve its queues. We "
           "can interpret that the more vehicles, the more saturation or the more important "
@@ -324,19 +313,6 @@ def chapter_7(doc: Doc, f: dict) -> None:
         f"**Amber ({f['amber']} s)** for the vehicle movements that lose green.",
         f"**All-red ({f['all_red']} s)** before the new green starts.",
     ])
-    doc.note("Correction with respect to the original version",
-             "The original scripts used `setPhase`, which jumps to a phase of the static "
-             "program stored in the network file; SUMO then keeps running that program on "
-             "its own. In the simple intersection the pedestrian phase of that program "
-             "lasted only 5 s, after which SUMO returned the green to vehicles by itself while "
-             "the script believed pedestrians still had green. In the Shibuya intersection "
-             "the script treated phases 0, 1, 2 and 3 as “north, south, east, west”, but "
-             "phase 2 was actually an amber and phase 4 (used as “amber”) was a green, and "
-             "the pedestrian pressure was added equally to all phases, so it never "
-             "influenced any decision. These problems are fixed in the new implementation, "
-             "and unit tests check that no transition ever gives green to two conflicting "
-             "movements.")
-
     doc.h("7.4 Reference controllers", 2)
     doc.p("To know whether the adaptive algorithm is good, it must be compared with what "
           "traffic engineers would actually install. Two references are used; both use "

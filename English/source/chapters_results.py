@@ -335,22 +335,13 @@ def _emissions(doc: Doc) -> None:
           "it reduces stop-and-go traffic (saturated and unbalanced Shibuya) and slightly "
           "higher where the fixed-time plan keeps vehicles moving better (simple "
           "intersection, Shibuya at intermediate demand).")
-    doc.note("Why the extrapolation to Barcelona has been removed",
-             "The original version multiplied Barcelona’s daily figures (63,000 hours lost "
-             "at the metropolitan access roads, €650,000 per day, the 54 % of NOx and 40 % of "
-             "particles due to traffic) by the improvement obtained in one simulated "
-             "intersection. That calculation is not valid, for several reasons: most of "
-             "those hours are lost on motorways and access roads, not at traffic lights; a "
-             "single isolated intersection with invented demand does not represent a whole "
-             "city network; the NOx and particle percentages describe *all* road traffic and "
-             "do not scale with the waiting time at signals; and, as this chapter shows, the "
-             "improvement is not a single number but depends strongly on the demand.\n\n"
-             "What the simulations do support is a qualitative statement: at intersections "
-             "that are saturated or have strongly unbalanced demand, an adaptive controller "
-             "can reduce delay and emissions by around 5–15 % compared with a well-designed "
-             "fixed-time plan, and by more compared with a simple actuated controller. "
-             "Estimating the effect for Barcelona would require simulating a real part of "
-             "the city (for example an Eixample corridor) with measured traffic counts.")
+    doc.p("At intersections that are saturated or have strongly unbalanced demand, an "
+          "adaptive controller can reduce delay and emissions by around 5–15 % compared with "
+          "a well-designed fixed-time plan, and by more compared with a simple actuated "
+          "controller. Estimating the effect for a whole city such as Barcelona would require "
+          "simulating a real part of the city (for example an Eixample corridor) with "
+          "measured traffic counts, since a single isolated intersection does not represent "
+          "a whole road network.")
 
 
 def _original_vs_revised(doc: Doc) -> None:

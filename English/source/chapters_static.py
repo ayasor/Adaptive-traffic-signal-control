@@ -49,7 +49,7 @@ def front_matter(doc: Doc) -> None:
     doc.p("First of all, I want to thank my tutor, Néstor Martínez, for his dedication, "
           "patience and guidance throughout the whole process. His support was key to "
           "steering and developing this project with rigour and motivation.")
-    doc.p("Secondly, I would like to thank my mother for her help in assessing different "
+    doc.p("Secondly, I would like to thank my mother, Marta Soria, for her help in assessing different "
           "sections and points of the work.")
     doc.p("I would also like to thank the teachers involved for their availability and "
           "interest, and for the advice and contributions that have enriched the work and "
