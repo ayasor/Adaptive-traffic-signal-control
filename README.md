@@ -21,7 +21,7 @@ The algorithm was implemented and evaluated using **SUMO (Simulation of Urban MO
 
 ## 📌 Overview
 
-Urban traffic congestion remains one of the major challenges affecting modern cities. Traditional traffic lights frequently operate using predefined cycles, meaning that phase durations remain fixed regardless of actual traffic conditions.
+Urban traffic congestion remains one of the major challenges affecting modern cities. Traditional traffic lights often operate using predefined cycles, meaning that phase durations remain fixed regardless of actual traffic conditions.
 
 This project explores an alternative approach based on a mathematical optimization model.
 
