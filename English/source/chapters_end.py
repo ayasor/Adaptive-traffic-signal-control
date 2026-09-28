@@ -30,6 +30,8 @@ REFERENCES = [
     "betevé. (2022, 11 July). L’Eixample concentra un de cada tres accidents amb ferits de tot "
     "Barcelona: 1.115 només fins al juny. https://beteve.cat/mobilitat/eixample-concentra-1-cada-"
     "3-accidents-barcelona-2022/",
+    "Bondy, J. A., & Murty, U. S. R. (2008). *Graph Theory* (Graduate Texts in Mathematics "
+    "244). Springer.",
     "Diario Público. (2023, 24 April). El trànsit de cotxes als accessos de Barcelona baixa un "
     "11% en vuit anys. https://www.publico.es/public/transit-cotxes-als-accessos-barcelona-baixa-"
     "11-vuit-anys.html",
@@ -45,6 +47,8 @@ REFERENCES = [
     "FAMA. (2024, 19 September). La guía definitiva sobre los tipos de señales de tráfico "
     "modernas. Ledtrafficlight.cn. https://www.ledtrafficlight.cn/es/the-guide-to-modern-"
     "traffic-signal-types",
+    "Ford, L. R., & Fulkerson, D. R. (1956). Maximal flow through a network. *Canadian Journal "
+    "of Mathematics*, 8, 399–404.",
     "Google. (2023, 10 October). Project Green Light’s work to reduce urban emissions using AI. "
     "https://blog.google/outreach-initiatives/sustainability/google-ai-reduce-greenhouse-"
     "emissions-project-greenlight",
@@ -63,6 +67,8 @@ REFERENCES = [
     "Nació. (2022, 5 April). Congestió a Glòries: un embut històric que el túnel no ha "
     "solucionat. https://naciodigital.cat/societat/congestio-a-glories-un-embut-historic-que-el-"
     "tunel-no-ha-solucionat.html",
+    "Stoffers, K. E. (1968). Scheduling of traffic lights: A new approach. *Transportation "
+    "Research*, 2(3), 199–234.",
     "TomTom. (n.d.). TomTom Traffic Index. Retrieved 4 March 2026 from "
     "https://www.tomtom.com/traffic-index/about/",
     "Transportation Research Board. (2022). *Highway Capacity Manual* (7th ed.). The National "

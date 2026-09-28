@@ -170,6 +170,27 @@ Where:
 
 This ensures that unsafe traffic movements cannot be selected by the controller.
 
+### 🕸️ The conflict graph (graph theory)
+
+Which movements can share a phase is decided with graph theory. Each signalised movement
+(a vehicle movement or a pedestrian crossing) is a **vertex**, and two vertices are joined by
+an **edge** when their paths conflict. A phase is safe exactly when it is an **independent
+set** of the graph of strong conflicts, and the minimum number of phases is the graph's
+**chromatic number** χ.
+
+The graphs are built automatically from the SUMO network files
+([`simulation/atsc/conflict_graph.py`](simulation/atsc/conflict_graph.py)):
+
+| Junction | Vertices | Strong / weak conflicts | χ (strong) | χ (all conflicts) |
+|---|---|---|---|---|
+| Simple crossing | 4 | 4 / 0 | 2 | 2 |
+| Shibuya-type | 16 | 36 / 17 | 2 | 4 |
+
+Two phases are enough only because left turns may go at the same time as oncoming traffic and
+give way to it (the 17 weak conflicts). A fully protected design would need 4 phases.
+
+![Conflict graph of the Shibuya-type junction](docs/conflict-graph.png)
+
 ---
 
 # 🎛️ Control Policy

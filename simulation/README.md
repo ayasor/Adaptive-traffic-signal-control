@@ -32,9 +32,12 @@ that are already there, so it can be interrupted and resumed.
 | `atsc/scenarios.py` | Phases, lanes and crossings of each intersection; safe transitions; demand scaling |
 | `atsc/adaptive.py` | Adaptive controller (TraCI): sensors, pressure, control policy |
 | `atsc/programs.py` | Baselines: Webster fixed-time plan and SUMO actuated program |
+| `atsc/conflict_graph.py` | Conflict graph of a junction: independent sets and chromatic number |
 | `atsc/runner.py` | Runs one simulation and computes the metrics from SUMO's tripinfo output |
 | `scenarios/` | SUMO networks and route templates of both intersections |
 | `calibrate_saturation.py` | Measures the saturation flow μ |
+| `plot_conflict_graph.py` | Draws the Shibuya conflict graph → `docs/conflict-graph.png` |
+| `record_gif.py` | Records the simulation GIF → `docs/shibuya-adaptive.gif` |
 | `tune.py` | Grid search of T_max, T_crit and pedestrian weights on tuning seeds |
 | `run_experiments.py` | Evaluation grid: scenarios × demand × controllers × 20 seeds |
 | `analyze.py` | Means, 95 % confidence intervals, paired improvements, figures |

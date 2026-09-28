@@ -256,7 +256,7 @@ def _shibuya(doc: Doc) -> None:
           "difference shrinks as demand grows (at 50 % it is no longer significant). The most "
           "likely explanation is a limitation of the model itself: the vehicle term assumes "
           "that a queue is discharged at the saturation flow μ, but in a shared lane blocked "
-          "by a left-turning vehicle almost nobody moves. The controller then sees a long "
+          "by a left-turning vehicle (one of the weak conflicts of section 6.2.2) almost nobody moves. The controller then sees a long "
           "queue with high pressure and keeps giving it green even though that green is "
           "being wasted, while the fixed plan simply moves on after a short, regular green.")
     doc.p(f"**Saturation (75–100 %).** When the intersection is completely saturated, the "

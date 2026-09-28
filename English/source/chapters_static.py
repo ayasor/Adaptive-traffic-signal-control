@@ -74,14 +74,17 @@ def abstract(doc: Doc, abstract_results: str) -> None:
           "term grows with the number of people waiting and with the waiting time of the "
           "person who has waited longest, with an extra penalty that prevents anyone from "
           "waiting indefinitely. The controller always activates the phase with the highest "
-          "pressure, respecting minimum and maximum green times and safe transitions.")
+          "pressure, respecting minimum and maximum green times and safe transitions. Which "
+          "movements can share a phase is decided with graph theory: the safe phases are the "
+          "independent sets of the junction's conflict graph, and the minimum number of "
+          "phases is its chromatic number.")
     doc.p("The algorithm was implemented in the SUMO traffic simulator and compared with a "
           "fixed-time plan designed with Webster’s method and with SUMO’s actuated "
           "controller, in a simple mid-block pedestrian crossing and in a four-arm "
           "“Shibuya-type” intersection, over a range of demand levels and "
           "with repeated simulations. " + abstract_results)
     doc.p("**Keywords:** urban traffic, adaptive traffic lights, optimisation, queueing "
-          "theory, SUMO, mathematical model.")
+          "theory, graph theory, SUMO, mathematical model.")
 
 
 def contents(doc: Doc, entries, pages) -> None:
@@ -601,6 +604,20 @@ def chapter_9_10(doc: Doc) -> None:
         "In addition, the application of artificial intelligence would allow the different "
         "intersections to communicate with each other and align themselves to improve "
         "traffic flow.",
+    ])
+    doc.p("Graph theory is the natural language for this extension, just as it was for the "
+          "phases of a single junction (section 6.2.2). The road network becomes a **directed "
+          "graph**: intersections are vertices and every lane is an edge with a capacity μ. "
+          "On that graph:")
+    doc.bullets([
+        "the pressure of a phase can compare the queue on the incoming edge with the queue on "
+        "the outgoing one (the network version of max-pressure, Varaiya 2013), so that a "
+        "junction does not send cars into a street that is already full;",
+        "the **max-flow min-cut theorem** (Ford & Fulkerson, 1956) gives the maximum number "
+        "of vehicles per hour the network can carry, which is an upper limit against which "
+        "any signal plan can be measured;",
+        "**shortest-path** algorithms such as Dijkstra's can estimate how drivers would "
+        "redistribute when some streets become slower.",
     ])
     doc.p("Implementing this model would require vehicle-to-network communication "
           "infrastructure, a centralised database and a distributed control architecture "

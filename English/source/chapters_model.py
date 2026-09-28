@@ -67,9 +67,10 @@ def chapter_6(doc: Doc, f: dict) -> None:
     doc.p("sₖ ∈ [0, 1] indicates whether the phase is safe to activate: 1 means the phase is "
           "completely safe and 0 that it is incompatible (for example, vehicles that would "
           "cross each other). It multiplies the whole pressure, so an unsafe phase has zero "
-          "effective pressure. In the implementation, only conflict-free phases are ever "
-          "defined, so every candidate phase has sₖ = 1, and the transitions between them "
-          "(amber, all-red, pedestrian clearance) are imposed separately (section 7.3).")
+          "effective pressure. Which phases are safe is decided with graph theory, using the "
+          "conflict graph of the junction (section 6.2.2). Only safe phases are ever defined, "
+          "so every candidate phase has sₖ = 1, and the transitions between them (amber, "
+          "all-red, pedestrian clearance) are imposed separately (section 7.3).")
     doc.h("6.2.1.2 Vehicle pressure", 4)
     doc.equation(r"\sum_{i\in C_k}w_i\,\frac{N_i}{\mu_i-\lambda_i}=\sum_{i\in C_k}w_i\,"
                  r"\frac{N_i}{\mu_i}\,\frac{1}{1-\rho_i}", numbered=False)
@@ -115,6 +116,8 @@ def chapter_6(doc: Doc, f: dict) -> None:
     ])
     doc.p(f"The values used are β = {f['beta']:g}, γ = {f['gamma']:g}, δ = {f['delta']:g} and "
           f"T_crit = {f['t_crit']:g} s. How they were chosen is explained in section 7.5.")
+
+    conflict_graph_section(doc, f)
 
     doc.h("6.3 Control policy", 2)
     doc.p("The decision policy of the system is defined as:")
@@ -367,3 +370,64 @@ def chapter_7(doc: Doc, f: dict) -> None:
     doc.p(f["tuning_text"])
     doc.table(["Parameter", "Value"], f["param_rows"],
               caption="Parameters of the adaptive controller.", widths_cm=[7.5, 7.5])
+
+
+def conflict_graph_section(doc: Doc, f: dict) -> None:
+    cg = f["cg"]
+    sh, si = cg["shibuya"], cg["simple"]
+    doc.h("6.2.2 The conflict graph: which phases are safe?", 3)
+    doc.p("The factor sₖ hides a real question: which movements can have green at the same "
+          "time without putting anyone in danger? Graph theory answers it precisely, and it is "
+          "the classical way traffic engineers design signal phases (Stoffers, 1968).")
+    doc.p("A **graph** G = (V, E) is a set of vertices V joined by edges E. For a junction:")
+    doc.bullets([
+        "each **vertex** is a movement controlled by the traffic light: a vehicle movement "
+        "(for example “from the north, turning left”) or a pedestrian crossing;",
+        "two vertices are joined by an **edge** when the movements **conflict**: their paths "
+        "cross or merge, so they cannot both move freely at the same time.",
+    ])
+    doc.p("Not every conflict is equally serious, so the edges are of two kinds:")
+    doc.bullets([
+        "**strong conflicts**, which only the signal can separate: vehicles coming from "
+        "perpendicular approaches, or a vehicle that drives straight across a pedestrian "
+        "crossing;",
+        "**weak conflicts**, which can be resolved by giving way: a left turn yielding to "
+        "oncoming traffic, two movements merging into the same exit, or a turning vehicle "
+        "yielding to the pedestrians on the crossing parallel to it. Both movements may "
+        "have green together (in SUMO, the yielding one shows a lower-case g).",
+    ])
+    doc.p("A set of vertices with no edge between any two of them is called an **independent "
+          "set**. A phase Mₖ (the set of movements it gives green to) is safe exactly when it "
+          "is an independent set of the graph of strong conflicts E_s (otherwise sₖ = 0):")
+    doc.equation(r"s_k=1\ \Leftrightarrow\ \{i,j\}\notin E_s\quad\forall\, i,j\in M_k")
+    doc.p("Choosing the phases is then a **graph colouring** problem: give every vertex a colour "
+          "so that two vertices joined by an edge never share a colour. Each colour is a phase, "
+          "and the smallest number of colours that is enough is the **chromatic number** χ(G), "
+          "the minimum number of phases the junction needs.")
+    doc.p("Both conflict graphs were built automatically from the SUMO network files (which "
+          "store, for every pair of movements, whether they conflict), and their chromatic "
+          "numbers were computed exactly with a backtracking algorithm:")
+    doc.table(["Junction", "Vertices", "Strong edges", "Weak edges", "χ (strong only)",
+               "χ (all conflicts)"],
+              [["Simple crossing", si["n"], si["strong"], si["weak"], si["chi_s"], si["chi_all"]],
+               ["Shibuya-type", sh["n"], sh["strong"], sh["weak"], sh["chi_s"], sh["chi_all"]]],
+              caption="Conflict graphs of the two junctions.",
+              widths_cm=[3.6, 2.2, 2.4, 2.4, 2.6, 2.8])
+    doc.image(IMG / "fig_conflict_graph.png",
+              "Conflict graph of the Shibuya-type junction. Each vertex is a movement, coloured "
+              "by the phase that serves it; solid edges are strong conflicts and dashed edges "
+              "are weak ones. No solid edge joins two vertices of the same colour: both phases "
+              "are independent sets.", 10.5)
+    doc.p(f"The results explain the design of both junctions. In each of them χ = "
+          f"{sh['chi_s']} for the strong conflicts, so two phases are enough, and the two "
+          "phases used in this project (vehicles / pedestrians in the simple crossing; "
+          "north–south / east–west in the Shibuya-type junction) are a valid colouring: a unit "
+          "test checks that no phase contains two movements with a strong conflict.")
+    doc.p(f"The Shibuya-type junction also shows the price of that choice. If weak conflicts "
+          f"were not allowed either, the chromatic number would rise to {sh['chi_all']}: every "
+          f"movement would need a fully protected phase, which would roughly double the time "
+          "lost in transitions. Two phases are only possible because left-turning vehicles "
+          "are allowed to go at the same time as oncoming traffic and give way to it. Those "
+          f"{sh['weak']} weak edges are precisely where the junction breaks down at high demand: "
+          "a left-turning car that waits for a gap blocks the single shared lane behind it "
+          "(section 8.3).")

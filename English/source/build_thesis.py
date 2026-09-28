@@ -87,8 +87,19 @@ def facts() -> dict:
         "seeds": seeds, "sumo_version": sumo_version,
         "grid_t_max": tune.T_MAX, "grid_t_crit": tune.T_CRIT, "grid_ped_scale": tune.PED_SCALE,
         "grid_size": n_grid, "tuning_text": tuning_text, "param_rows": param_rows,
-        "webster_table_no": 2, "webster_rows": webster_rows(sat["mu"]),
+        "webster_table_no": 3, "webster_rows": webster_rows(sat["mu"]),
+        "cg": conflict_graph_facts(),
     }
+
+
+def conflict_graph_facts() -> dict:
+    from atsc.conflict_graph import load
+    out = {}
+    for name, scn in scenarios.SCENARIOS.items():
+        g = load(scn.net_file, scn.tl_id)
+        out[name] = {"n": len(g.nodes), "strong": len(g.strong), "weak": len(g.weak),
+                     "chi_s": g.chromatic_number()[0], "chi_all": g.chromatic_number(True)[0]}
+    return out
 
 
 def webster_rows(mu_value: float) -> list[list[str]]:
