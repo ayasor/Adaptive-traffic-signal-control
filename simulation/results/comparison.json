@@ -1,0 +1,497 @@
+[
+  {
+    "scenario": "shibuya",
+    "variant": "balanced",
+    "veh_scale": 0.2,
+    "m_veh_delay_mean_s_vs_fixed": {
+      "mean": 0.0243,
+      "ci95": 0.0358,
+      "adaptive_better_in": "12/20"
+    },
+    "m_veh_wait_mean_s_vs_fixed": {
+      "mean": 0.0261,
+      "ci95": 0.0455,
+      "adaptive_better_in": "12/20"
+    },
+    "m_ped_wait_mean_s_vs_fixed": {
+      "mean": -0.0091,
+      "ci95": 0.0124,
+      "adaptive_better_in": "7/20"
+    },
+    "m_co2_g_per_veh_vs_fixed": {
+      "mean": 0.0088,
+      "ci95": 0.0131,
+      "adaptive_better_in": "11/20"
+    },
+    "m_veh_delay_mean_s_vs_actuated": {
+      "mean": 0.1598,
+      "ci95": 0.1089,
+      "adaptive_better_in": "17/20"
+    },
+    "m_veh_wait_mean_s_vs_actuated": {
+      "mean": 0.1973,
+      "ci95": 0.1201,
+      "adaptive_better_in": "17/20"
+    },
+    "m_ped_wait_mean_s_vs_actuated": {
+      "mean": 0.1487,
+      "ci95": 0.0943,
+      "adaptive_better_in": "19/20"
+    },
+    "m_co2_g_per_veh_vs_actuated": {
+      "mean": 0.0841,
+      "ci95": 0.0686,
+      "adaptive_better_in": "17/20"
+    }
+  },
+  {
+    "scenario": "shibuya",
+    "variant": "balanced",
+    "veh_scale": 0.3,
+    "m_veh_delay_mean_s_vs_fixed": {
+      "mean": -0.4352,
+      "ci95": 0.3392,
+      "adaptive_better_in": "4/20"
+    },
+    "m_veh_wait_mean_s_vs_fixed": {
+      "mean": -0.3691,
+      "ci95": 0.2201,
+      "adaptive_better_in": "3/20"
+    },
+    "m_ped_wait_mean_s_vs_fixed": {
+      "mean": -0.3203,
+      "ci95": 0.3258,
+      "adaptive_better_in": "3/20"
+    },
+    "m_co2_g_per_veh_vs_fixed": {
+      "mean": -0.1805,
+      "ci95": 0.1142,
+      "adaptive_better_in": "3/20"
+    },
+    "m_veh_delay_mean_s_vs_actuated": {
+      "mean": 0.6384,
+      "ci95": 0.0889,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_wait_mean_s_vs_actuated": {
+      "mean": 0.57,
+      "ci95": 0.0984,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_actuated": {
+      "mean": 0.2662,
+      "ci95": 0.2077,
+      "adaptive_better_in": "16/20"
+    },
+    "m_co2_g_per_veh_vs_actuated": {
+      "mean": 0.3782,
+      "ci95": 0.089,
+      "adaptive_better_in": "19/20"
+    }
+  },
+  {
+    "scenario": "shibuya",
+    "variant": "balanced",
+    "veh_scale": 0.4,
+    "m_veh_delay_mean_s_vs_fixed": {
+      "mean": -0.1162,
+      "ci95": 0.1203,
+      "adaptive_better_in": "4/20"
+    },
+    "m_veh_wait_mean_s_vs_fixed": {
+      "mean": -0.0486,
+      "ci95": 0.0686,
+      "adaptive_better_in": "5/20"
+    },
+    "m_ped_wait_mean_s_vs_fixed": {
+      "mean": -0.2018,
+      "ci95": 0.3316,
+      "adaptive_better_in": "6/20"
+    },
+    "m_co2_g_per_veh_vs_fixed": {
+      "mean": -0.0185,
+      "ci95": 0.0413,
+      "adaptive_better_in": "7/20"
+    },
+    "m_veh_delay_mean_s_vs_actuated": {
+      "mean": 0.5437,
+      "ci95": 0.0528,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_wait_mean_s_vs_actuated": {
+      "mean": 0.3994,
+      "ci95": 0.0397,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_actuated": {
+      "mean": 0.5347,
+      "ci95": 0.1412,
+      "adaptive_better_in": "19/20"
+    },
+    "m_co2_g_per_veh_vs_actuated": {
+      "mean": 0.1852,
+      "ci95": 0.0356,
+      "adaptive_better_in": "20/20"
+    }
+  },
+  {
+    "scenario": "shibuya",
+    "variant": "balanced",
+    "veh_scale": 0.5,
+    "m_veh_delay_mean_s_vs_fixed": {
+      "mean": -0.0365,
+      "ci95": 0.0504,
+      "adaptive_better_in": "4/20"
+    },
+    "m_veh_wait_mean_s_vs_fixed": {
+      "mean": -0.0065,
+      "ci95": 0.0365,
+      "adaptive_better_in": "9/20"
+    },
+    "m_ped_wait_mean_s_vs_fixed": {
+      "mean": -0.2107,
+      "ci95": 0.2971,
+      "adaptive_better_in": "7/20"
+    },
+    "m_co2_g_per_veh_vs_fixed": {
+      "mean": 0.007,
+      "ci95": 0.0197,
+      "adaptive_better_in": "11/20"
+    },
+    "m_veh_delay_mean_s_vs_actuated": {
+      "mean": 0.3486,
+      "ci95": 0.0416,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_wait_mean_s_vs_actuated": {
+      "mean": 0.3134,
+      "ci95": 0.0386,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_actuated": {
+      "mean": 0.4346,
+      "ci95": 0.1454,
+      "adaptive_better_in": "18/20"
+    },
+    "m_co2_g_per_veh_vs_actuated": {
+      "mean": 0.0911,
+      "ci95": 0.0319,
+      "adaptive_better_in": "19/20"
+    }
+  },
+  {
+    "scenario": "shibuya",
+    "variant": "balanced",
+    "veh_scale": 0.75,
+    "m_veh_delay_mean_s_vs_fixed": {
+      "mean": 0.0687,
+      "ci95": 0.0255,
+      "adaptive_better_in": "19/20"
+    },
+    "m_veh_wait_mean_s_vs_fixed": {
+      "mean": 0.1664,
+      "ci95": 0.0291,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_fixed": {
+      "mean": 0.0843,
+      "ci95": 0.3036,
+      "adaptive_better_in": "18/20"
+    },
+    "m_co2_g_per_veh_vs_fixed": {
+      "mean": 0.0522,
+      "ci95": 0.0166,
+      "adaptive_better_in": "18/20"
+    },
+    "m_veh_delay_mean_s_vs_actuated": {
+      "mean": 0.1694,
+      "ci95": 0.0236,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_wait_mean_s_vs_actuated": {
+      "mean": 0.3625,
+      "ci95": 0.0246,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_actuated": {
+      "mean": 0.4193,
+      "ci95": 0.1997,
+      "adaptive_better_in": "18/20"
+    },
+    "m_co2_g_per_veh_vs_actuated": {
+      "mean": 0.1357,
+      "ci95": 0.0198,
+      "adaptive_better_in": "20/20"
+    }
+  },
+  {
+    "scenario": "shibuya",
+    "variant": "balanced",
+    "veh_scale": 1.0,
+    "m_veh_delay_mean_s_vs_fixed": {
+      "mean": 0.1012,
+      "ci95": 0.0185,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_wait_mean_s_vs_fixed": {
+      "mean": 0.3687,
+      "ci95": 0.0262,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_fixed": {
+      "mean": 0.42,
+      "ci95": 0.2094,
+      "adaptive_better_in": "16/20"
+    },
+    "m_co2_g_per_veh_vs_fixed": {
+      "mean": 0.1278,
+      "ci95": 0.0202,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_delay_mean_s_vs_actuated": {
+      "mean": 0.1005,
+      "ci95": 0.0236,
+      "adaptive_better_in": "19/20"
+    },
+    "m_veh_wait_mean_s_vs_actuated": {
+      "mean": 0.3501,
+      "ci95": 0.038,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_actuated": {
+      "mean": 0.2913,
+      "ci95": 0.3053,
+      "adaptive_better_in": "16/20"
+    },
+    "m_co2_g_per_veh_vs_actuated": {
+      "mean": 0.1254,
+      "ci95": 0.0298,
+      "adaptive_better_in": "19/20"
+    }
+  },
+  {
+    "scenario": "shibuya",
+    "variant": "unbalanced",
+    "veh_scale": 1.0,
+    "m_veh_delay_mean_s_vs_fixed": {
+      "mean": 0.1467,
+      "ci95": 0.0333,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_wait_mean_s_vs_fixed": {
+      "mean": 0.2818,
+      "ci95": 0.0529,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_fixed": {
+      "mean": -0.0297,
+      "ci95": 0.2983,
+      "adaptive_better_in": "14/20"
+    },
+    "m_co2_g_per_veh_vs_fixed": {
+      "mean": 0.1567,
+      "ci95": 0.0235,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_delay_mean_s_vs_actuated": {
+      "mean": 0.0328,
+      "ci95": 0.0455,
+      "adaptive_better_in": "12/20"
+    },
+    "m_veh_wait_mean_s_vs_actuated": {
+      "mean": 0.1539,
+      "ci95": 0.0558,
+      "adaptive_better_in": "17/20"
+    },
+    "m_ped_wait_mean_s_vs_actuated": {
+      "mean": 0.0673,
+      "ci95": 0.2136,
+      "adaptive_better_in": "17/20"
+    },
+    "m_co2_g_per_veh_vs_actuated": {
+      "mean": 0.0851,
+      "ci95": 0.0193,
+      "adaptive_better_in": "19/20"
+    }
+  },
+  {
+    "scenario": "simple",
+    "variant": "balanced",
+    "veh_scale": 0.25,
+    "m_veh_delay_mean_s_vs_fixed": {
+      "mean": -0.0088,
+      "ci95": 0.0364,
+      "adaptive_better_in": "7/20"
+    },
+    "m_veh_wait_mean_s_vs_fixed": {
+      "mean": -0.0042,
+      "ci95": 0.0495,
+      "adaptive_better_in": "8/20"
+    },
+    "m_ped_wait_mean_s_vs_fixed": {
+      "mean": 0.3896,
+      "ci95": 0.0172,
+      "adaptive_better_in": "20/20"
+    },
+    "m_co2_g_per_veh_vs_fixed": {
+      "mean": -0.0082,
+      "ci95": 0.0169,
+      "adaptive_better_in": "8/20"
+    },
+    "m_veh_delay_mean_s_vs_actuated": {
+      "mean": 0.124,
+      "ci95": 0.0363,
+      "adaptive_better_in": "19/20"
+    },
+    "m_veh_wait_mean_s_vs_actuated": {
+      "mean": 0.1135,
+      "ci95": 0.0522,
+      "adaptive_better_in": "17/20"
+    },
+    "m_ped_wait_mean_s_vs_actuated": {
+      "mean": 0.1031,
+      "ci95": 0.0306,
+      "adaptive_better_in": "19/20"
+    },
+    "m_co2_g_per_veh_vs_actuated": {
+      "mean": 0.0729,
+      "ci95": 0.0172,
+      "adaptive_better_in": "20/20"
+    }
+  },
+  {
+    "scenario": "simple",
+    "variant": "balanced",
+    "veh_scale": 0.5,
+    "m_veh_delay_mean_s_vs_fixed": {
+      "mean": -0.0391,
+      "ci95": 0.0214,
+      "adaptive_better_in": "5/20"
+    },
+    "m_veh_wait_mean_s_vs_fixed": {
+      "mean": -0.0188,
+      "ci95": 0.0317,
+      "adaptive_better_in": "9/20"
+    },
+    "m_ped_wait_mean_s_vs_fixed": {
+      "mean": 0.4141,
+      "ci95": 0.0218,
+      "adaptive_better_in": "20/20"
+    },
+    "m_co2_g_per_veh_vs_fixed": {
+      "mean": -0.0369,
+      "ci95": 0.0115,
+      "adaptive_better_in": "1/20"
+    },
+    "m_veh_delay_mean_s_vs_actuated": {
+      "mean": 0.09,
+      "ci95": 0.0241,
+      "adaptive_better_in": "19/20"
+    },
+    "m_veh_wait_mean_s_vs_actuated": {
+      "mean": 0.0965,
+      "ci95": 0.0339,
+      "adaptive_better_in": "17/20"
+    },
+    "m_ped_wait_mean_s_vs_actuated": {
+      "mean": 0.1618,
+      "ci95": 0.0267,
+      "adaptive_better_in": "20/20"
+    },
+    "m_co2_g_per_veh_vs_actuated": {
+      "mean": 0.0502,
+      "ci95": 0.0125,
+      "adaptive_better_in": "20/20"
+    }
+  },
+  {
+    "scenario": "simple",
+    "variant": "balanced",
+    "veh_scale": 0.75,
+    "m_veh_delay_mean_s_vs_fixed": {
+      "mean": -0.0502,
+      "ci95": 0.0319,
+      "adaptive_better_in": "2/20"
+    },
+    "m_veh_wait_mean_s_vs_fixed": {
+      "mean": -0.0059,
+      "ci95": 0.0416,
+      "adaptive_better_in": "8/20"
+    },
+    "m_ped_wait_mean_s_vs_fixed": {
+      "mean": 0.3761,
+      "ci95": 0.0206,
+      "adaptive_better_in": "20/20"
+    },
+    "m_co2_g_per_veh_vs_fixed": {
+      "mean": -0.0528,
+      "ci95": 0.0145,
+      "adaptive_better_in": "2/20"
+    },
+    "m_veh_delay_mean_s_vs_actuated": {
+      "mean": 0.0911,
+      "ci95": 0.0242,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_wait_mean_s_vs_actuated": {
+      "mean": 0.1247,
+      "ci95": 0.0346,
+      "adaptive_better_in": "19/20"
+    },
+    "m_ped_wait_mean_s_vs_actuated": {
+      "mean": 0.1385,
+      "ci95": 0.0264,
+      "adaptive_better_in": "20/20"
+    },
+    "m_co2_g_per_veh_vs_actuated": {
+      "mean": 0.0364,
+      "ci95": 0.0109,
+      "adaptive_better_in": "19/20"
+    }
+  },
+  {
+    "scenario": "simple",
+    "variant": "balanced",
+    "veh_scale": 1.0,
+    "m_veh_delay_mean_s_vs_fixed": {
+      "mean": -0.0434,
+      "ci95": 0.0319,
+      "adaptive_better_in": "5/20"
+    },
+    "m_veh_wait_mean_s_vs_fixed": {
+      "mean": -0.018,
+      "ci95": 0.0427,
+      "adaptive_better_in": "7/20"
+    },
+    "m_ped_wait_mean_s_vs_fixed": {
+      "mean": 0.2794,
+      "ci95": 0.0265,
+      "adaptive_better_in": "20/20"
+    },
+    "m_co2_g_per_veh_vs_fixed": {
+      "mean": -0.0581,
+      "ci95": 0.0108,
+      "adaptive_better_in": "0/20"
+    },
+    "m_veh_delay_mean_s_vs_actuated": {
+      "mean": 0.4845,
+      "ci95": 0.0346,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_wait_mean_s_vs_actuated": {
+      "mean": 0.5106,
+      "ci95": 0.025,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_actuated": {
+      "mean": -0.2367,
+      "ci95": 0.0516,
+      "adaptive_better_in": "0/20"
+    },
+    "m_co2_g_per_veh_vs_actuated": {
+      "mean": 0.1517,
+      "ci95": 0.0094,
+      "adaptive_better_in": "20/20"
+    }
+  }
+]
