@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "deny": [
+      "Edit(/English/award-winning-edition/**)",
+      "Write(/English/award-winning-edition/**)",
+      "Bash(rm *award-winning-edition*)",
+      "Bash(mv *award-winning-edition*)",
+      "Bash(chmod *award-winning-edition*)"
+    ]
+  }
+}

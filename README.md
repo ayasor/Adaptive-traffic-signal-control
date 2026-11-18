@@ -319,11 +319,13 @@ competitor otherwise.
 ![Shibuya-type junction: mean vehicle delay and vehicles served vs demand for the three controllers](docs/shibuya-results.png)
 
 *Shibuya-type junction, mean of 20 seeds (shaded band = 95 % confidence interval). The
-max-pressure comparison was added after the thesis; its figures are in
+max-pressure comparison was added after the award; its figures are in
 [`simulation/results/figures/`](simulation/results/figures/).*
 
-Full results: [`simulation/results/`](simulation/results/) and chapter 8 of the English edition
-(Webster, actuated and adaptive controllers).
+Full results: [`simulation/results/`](simulation/results/) and chapter 8 of the
+[extended edition](English/extended-edition/) of the thesis, which includes max-pressure. The
+[award-winning edition](English/award-winning-edition/) compares Webster, actuated and adaptive
+control only.
 
 ---
 
@@ -406,7 +408,7 @@ See the [simulation README](simulation/README.md) for details.
 
 ### 5. (Optional) Rebuild the thesis
 
-The English edition is generated from the simulation results. Besides the Python packages
+The extended edition is generated from the simulation results. Besides the Python packages
 from step 2, this needs LibreOffice and Poppler to compute the page numbers of the table of
 contents:
 
@@ -414,9 +416,12 @@ contents:
 sudo dnf install libreoffice-writer poppler-utils      # Fedora
 # sudo apt install libreoffice-writer poppler-utils    # Debian / Ubuntu
 # brew install --cask libreoffice && brew install poppler   # macOS
-cd English/source
+cd English/extended-edition/source
 python build_thesis.py
 ```
+
+The award-winning edition is frozen and is not rebuilt (see its
+[README](English/award-winning-edition/README.md)).
 
 ### Troubleshooting
 
@@ -434,7 +439,8 @@ python build_thesis.py
 
 | Path | Contents |
 |---|---|
-| `English/` | English edition of the thesis (`.docx` and `.pdf`) and the script that builds it from the results |
+| `English/award-winning-edition/` | English translation of the thesis exactly as it won the prize (`.docx` and `.pdf`). **Frozen: never modified** |
+| `English/extended-edition/` | Extended English edition, adds the max-pressure comparison; built from the results by its `source/` scripts |
 | `simulation/` | Simulation code, SUMO networks, tests and all results ([README](simulation/README.md)) |
 
 ---
