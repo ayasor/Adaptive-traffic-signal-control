@@ -2,3 +2,4 @@ eclipse-sumo>=1.24
 traci>=1.24
 sumolib>=1.24
 matplotlib>=3.8
+python-docx>=1.1   # only to rebuild the thesis (English/source/build_thesis.py)

@@ -337,6 +337,99 @@ isolated intersection does not represent a whole road network.
 
 ---
 
+# ⚙️ Installation
+
+Everything runs from a Python virtual environment. SUMO itself is installed from PyPI
+(`eclipse-sumo`), so no system-wide SUMO installation or `SUMO_HOME` variable is needed.
+
+### Requirements
+
+* **Python 3.10 or newer** (developed with Python 3.14).
+* **Git**.
+* *Optional, only to rebuild the thesis PDF:* LibreOffice (`soffice`) and Poppler
+  (`pdftotext`).
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/ayasor/Adaptive-traffic-signal-control.git
+cd Adaptive-traffic-signal-control
+```
+
+### 2. Create a virtual environment and install the dependencies
+
+Linux / macOS:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r simulation/requirements.txt
+```
+
+Windows (PowerShell):
+
+```powershell
+py -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r simulation/requirements.txt
+```
+
+This installs SUMO (`eclipse-sumo`), its Python interfaces (`traci`, `sumolib`),
+`matplotlib` and `python-docx` (used to build the thesis). The download is a few hundred MB because it includes the SUMO binaries.
+
+### 3. Check the installation
+
+```bash
+cd simulation
+python -c "from atsc.sumo_env import sumo_binary; print(sumo_binary())"   # path to the sumo binary
+python -m unittest discover -s tests                                       # model unit tests
+```
+
+If both commands finish without errors, the simulation is ready.
+
+### 4. Run the simulations
+
+From the `simulation/` folder, with the virtual environment active:
+
+```bash
+python run_experiments.py --gui simple adaptive 1.0   # watch one run in the SUMO GUI
+python calibrate_saturation.py                         # measure the saturation flow μ
+python tune.py                                         # parameter grid search
+python run_experiments.py                              # full evaluation (20 seeds)
+python analyze.py                                      # tables and figures -> results/
+```
+
+The full evaluation takes a long time; it can be interrupted and resumed because finished
+runs are skipped. The results used in the thesis are already in
+[`simulation/results/`](simulation/results/), so this step is only needed to reproduce them.
+See the [simulation README](simulation/README.md) for details.
+
+### 5. (Optional) Rebuild the thesis
+
+The English edition is generated from the simulation results. Besides the Python packages
+from step 2, this needs LibreOffice and Poppler to compute the page numbers of the table of
+contents:
+
+```bash
+sudo dnf install libreoffice-writer poppler-utils      # Fedora
+# sudo apt install libreoffice-writer poppler-utils    # Debian / Ubuntu
+# brew install --cask libreoffice && brew install poppler   # macOS
+cd English/source
+python build_thesis.py
+```
+
+### Troubleshooting
+
+* **`SUMO not found`** — the virtual environment is not active, or `eclipse-sumo` failed to
+  install. Activate `.venv` and run `pip install -r simulation/requirements.txt` again. If you
+  prefer a system-wide SUMO, set `SUMO_HOME` to its installation folder instead.
+* **`sumo-gui` does not open** — the GUI needs a graphical session; on a headless server use
+  the commands without `--gui`.
+* **`.venv/bin/pip: bad interpreter`** — the virtual environment was moved or renamed after it
+  was created. Delete `.venv` and create it again (step 2).
+
+---
+
 # 📁 Repository structure
 
 | Path | Contents |
@@ -587,6 +680,7 @@ Computer Science student and developer interested in:
 # 📄 License
 
 MIT License.
+
 ---
 
 ## ⭐ If you found this project interesting
