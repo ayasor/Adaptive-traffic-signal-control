@@ -230,15 +230,16 @@ SUMO provides a microscopic traffic simulation environment capable of modelling:
 * Traffic lights.
 * Traffic demand.
 
-The adaptive algorithm was compared against two references that use exactly the same phases
-and safety intervals: a **fixed-time plan designed with Webster's method** and **SUMO's
-gap-based actuated controller**.
+The adaptive algorithm was compared against three references that use exactly the same phases
+and safety intervals: a **fixed-time plan designed with Webster's method**, **SUMO's
+gap-based actuated controller** and a **max-pressure controller** (Varaiya, 2013), the
+standard benchmark for adaptive signal control in the literature.
 
 ---
 
 # 🏙️ Simulation Scenarios
 
-The controller was tested across different levels of intersection complexity.
+The controller was tested on two intersections of increasing complexity.
 
 ## 1. Simple Bidirectional Intersection
 
@@ -252,19 +253,7 @@ The scenario evaluates the controller's ability to balance:
 
 ---
 
-## 2. Multiple Pedestrian Crossing Scenario
-
-A more complex bidirectional road configuration including:
-
-* Multiple pedestrian crossings.
-* Multiple traffic lights.
-* Simultaneous vehicle and pedestrian flows.
-
-This scenario increases the complexity of the decision-making process and evaluates how the adaptive controller manages competing traffic demands.
-
----
-
-## 3. Shibuya-Style Intersection
+## 2. Shibuya-Style Intersection
 
 The most complex scenario developed for the project.
 
@@ -295,13 +284,13 @@ are reported with 95 % confidence intervals and paired (seed-by-seed) comparison
 Improvement of the adaptive controller, \(m = (W_{ref} - W_{adaptive}) / W_{ref}\), paired by
 seed (20 seeds, mean ± 95 % CI; **positive = adaptive better**):
 
-| Case | Vehicle delay vs Webster | Pedestrian wait vs Webster | Vehicle delay vs actuated | Delay per person vs Webster |
-|---|---|---|---|---|
-| Simple crossing, 50 % demand | −4 ± 2 % | **+41 ± 2 %** | +9 ± 2 % | +8 ± 2 % |
-| Simple crossing, 100 % demand | −4 ± 3 % | **+28 ± 3 %** | **+48 ± 3 %** | +4 ± 2 % |
-| Shibuya, 30 % demand | −44 ± 34 % | −32 ± 33 % | **+64 ± 9 %** | −40 ± 33 % |
-| Shibuya, 100 % demand (saturated) | **+10 ± 2 %** | **+42 ± 21 %** | +10 ± 2 % | +10 ± 2 % |
-| Shibuya, unbalanced demand | **+15 ± 3 %** | −3 ± 30 % | +3 ± 5 % | +15 ± 4 % |
+| Case | Vehicle delay vs Webster | Pedestrian wait vs Webster | Vehicle delay vs actuated | Vehicle delay vs max-pressure | Delay per person vs Webster |
+|---|---|---|---|---|---|
+| Simple crossing, 50 % demand | −4 ± 2 % | **+41 ± 2 %** | +9 ± 2 % | **+44 ± 2 %** | +8 ± 2 % |
+| Simple crossing, 100 % demand | −4 ± 3 % | **+28 ± 3 %** | **+48 ± 3 %** | **+94 ± 1 %** | +4 ± 2 % |
+| Shibuya, 30 % demand | −44 ± 34 % | −32 ± 33 % | **+64 ± 9 %** | −20 ± 30 % | −40 ± 33 % |
+| Shibuya, 100 % demand (saturated) | **+10 ± 2 %** | **+42 ± 21 %** | +10 ± 2 % | −1 ± 2 % | +10 ± 2 % |
+| Shibuya, unbalanced demand | **+15 ± 3 %** | −3 ± 30 % | +3 ± 5 % | −5 ± 5 % | +15 ± 4 % |
 
 In short:
 
@@ -313,6 +302,14 @@ In short:
   model assumes queues discharge at the saturation flow, which is false in shared lanes
   blocked by left-turning vehicles.
 * The adaptive controller beats SUMO's actuated controller in almost every case.
+* **Against max-pressure** the picture depends on the intersection. At the Shibuya-type
+  junction both controllers are statistically tied for vehicles at medium and high demand,
+  and max-pressure makes pedestrians wait somewhat less. At the simple crossing max-pressure
+  collapses for vehicles (179 s of delay at 100 % demand, against 10 s): it ignores the time
+  lost at every phase change and switches to the pedestrians whenever the vehicle queue
+  briefly drops, whereas the factor \(1/(1-\rho)\) keeps the green on a nearly saturated
+  lane. Max-pressure has no standard treatment of pedestrians; here each waiting pedestrian
+  counts as one queued road user.
 
 The hypothesis (adaptive control reduces vehicle delay compared with fixed-time control) is
 therefore **only partially confirmed**: adaptive control helps most when the intersection is
@@ -321,9 +318,12 @@ competitor otherwise.
 
 ![Shibuya-type junction: mean vehicle delay and vehicles served vs demand for the three controllers](docs/shibuya-results.png)
 
-*Shibuya-type junction, mean of 20 seeds (shaded band = 95 % confidence interval).*
+*Shibuya-type junction, mean of 20 seeds (shaded band = 95 % confidence interval). The
+max-pressure comparison was added after the thesis; its figures are in
+[`simulation/results/figures/`](simulation/results/figures/).*
 
-Full results: [`simulation/results/`](simulation/results/) and chapter 8 of the English edition.
+Full results: [`simulation/results/`](simulation/results/) and chapter 8 of the English edition
+(Webster, actuated and adaptive controllers).
 
 ---
 

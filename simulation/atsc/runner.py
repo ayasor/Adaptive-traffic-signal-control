@@ -1,9 +1,9 @@
 """Run one simulation and compute the evaluation metrics.
 
-All three controllers are evaluated with *identical* measurement code: the
+All controllers are evaluated with *identical* measurement code: the
 metrics come from SUMO's own tripinfo / statistics output, never from the
 controller.  The TraCI loop is used for every controller only to (a) drive
-the adaptive controller and (b) note which pedestrians used a signalised
+the TraCI controllers (adaptive, max-pressure) and (b) note which pedestrians used a signalised
 crossing, so that pedestrian waiting times are averaged over the people who
 actually had to wait for the signal.
 """
@@ -20,6 +20,7 @@ from pathlib import Path
 import traci
 
 from .adaptive import AdaptiveController, AdaptiveParams
+from .max_pressure import MaxPressureController
 from .pressure import PedestrianWeights
 from .programs import webster, write_actuated, write_fixed_time
 from .scenarios import SCENARIOS, vehicle_demand, write_routes
@@ -32,11 +33,11 @@ CLEARANCE = 1800      # then up to 30 min more to let the queues empty
 @dataclass
 class RunSpec:
     scenario: str
-    controller: str            # "fixed" | "actuated" | "adaptive"
+    controller: str            # "fixed" | "actuated" | "adaptive" | "max_pressure"
     seed: int
     veh_scale: float = 1.0
     variant: str = "balanced"  # "balanced" | "unbalanced"
-    t_max: int = 90            # maximum green (adaptive and actuated)
+    t_max: int = 90            # maximum green (adaptive, actuated and max-pressure)
     t_crit: float = 90.0       # critical pedestrian waiting time (adaptive)
     ped_scale: float = 1.0     # multiplies beta and gamma (adaptive)
 
@@ -92,6 +93,8 @@ def run(spec: RunSpec, mu: dict[str, float], workdir: Path, gui: bool = False) -
             ped = replace(base, beta=base.beta * spec.ped_scale,
                           gamma=base.gamma * spec.ped_scale, t_crit=spec.t_crit)
             ctrl = AdaptiveController(scn, mu, AdaptiveParams(t_max=spec.t_max, ped=ped))
+        elif spec.controller == "max_pressure":
+            ctrl = MaxPressureController(scn, mu, AdaptiveParams(t_max=spec.t_max))
         while True:
             t = conn.simulation.getTime()
             if t >= DEMAND_END + CLEARANCE:

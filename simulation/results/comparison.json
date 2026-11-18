@@ -42,6 +42,26 @@
       "mean": 0.0841,
       "ci95": 0.0686,
       "adaptive_better_in": "17/20"
+    },
+    "m_veh_delay_mean_s_vs_max_pressure": {
+      "mean": 0.0575,
+      "ci95": 0.042,
+      "adaptive_better_in": "17/20"
+    },
+    "m_veh_wait_mean_s_vs_max_pressure": {
+      "mean": 0.0762,
+      "ci95": 0.0538,
+      "adaptive_better_in": "17/20"
+    },
+    "m_ped_wait_mean_s_vs_max_pressure": {
+      "mean": 0.0318,
+      "ci95": 0.0132,
+      "adaptive_better_in": "18/20"
+    },
+    "m_co2_g_per_veh_vs_max_pressure": {
+      "mean": 0.0235,
+      "ci95": 0.0168,
+      "adaptive_better_in": "16/20"
     }
   },
   {
@@ -87,6 +107,26 @@
       "mean": 0.3782,
       "ci95": 0.089,
       "adaptive_better_in": "19/20"
+    },
+    "m_veh_delay_mean_s_vs_max_pressure": {
+      "mean": -0.2002,
+      "ci95": 0.3043,
+      "adaptive_better_in": "10/20"
+    },
+    "m_veh_wait_mean_s_vs_max_pressure": {
+      "mean": -0.1234,
+      "ci95": 0.2455,
+      "adaptive_better_in": "11/20"
+    },
+    "m_ped_wait_mean_s_vs_max_pressure": {
+      "mean": -0.3015,
+      "ci95": 0.3783,
+      "adaptive_better_in": "14/20"
+    },
+    "m_co2_g_per_veh_vs_max_pressure": {
+      "mean": -0.0638,
+      "ci95": 0.1401,
+      "adaptive_better_in": "10/20"
     }
   },
   {
@@ -132,6 +172,26 @@
       "mean": 0.1852,
       "ci95": 0.0356,
       "adaptive_better_in": "20/20"
+    },
+    "m_veh_delay_mean_s_vs_max_pressure": {
+      "mean": 0.0504,
+      "ci95": 0.1092,
+      "adaptive_better_in": "13/20"
+    },
+    "m_veh_wait_mean_s_vs_max_pressure": {
+      "mean": 0.059,
+      "ci95": 0.0664,
+      "adaptive_better_in": "15/20"
+    },
+    "m_ped_wait_mean_s_vs_max_pressure": {
+      "mean": -0.025,
+      "ci95": 0.2618,
+      "adaptive_better_in": "16/20"
+    },
+    "m_co2_g_per_veh_vs_max_pressure": {
+      "mean": 0.037,
+      "ci95": 0.0417,
+      "adaptive_better_in": "13/20"
     }
   },
   {
@@ -177,6 +237,26 @@
       "mean": 0.0911,
       "ci95": 0.0319,
       "adaptive_better_in": "19/20"
+    },
+    "m_veh_delay_mean_s_vs_max_pressure": {
+      "mean": -0.0662,
+      "ci95": 0.0772,
+      "adaptive_better_in": "8/20"
+    },
+    "m_veh_wait_mean_s_vs_max_pressure": {
+      "mean": -0.04,
+      "ci95": 0.041,
+      "adaptive_better_in": "6/20"
+    },
+    "m_ped_wait_mean_s_vs_max_pressure": {
+      "mean": -0.3175,
+      "ci95": 0.3235,
+      "adaptive_better_in": "6/20"
+    },
+    "m_co2_g_per_veh_vs_max_pressure": {
+      "mean": -0.0227,
+      "ci95": 0.0229,
+      "adaptive_better_in": "5/20"
     }
   },
   {
@@ -222,6 +302,26 @@
       "mean": 0.1357,
       "ci95": 0.0198,
       "adaptive_better_in": "20/20"
+    },
+    "m_veh_delay_mean_s_vs_max_pressure": {
+      "mean": 0.0018,
+      "ci95": 0.0111,
+      "adaptive_better_in": "11/20"
+    },
+    "m_veh_wait_mean_s_vs_max_pressure": {
+      "mean": -0.0026,
+      "ci95": 0.0169,
+      "adaptive_better_in": "9/20"
+    },
+    "m_ped_wait_mean_s_vs_max_pressure": {
+      "mean": -0.087,
+      "ci95": 0.1615,
+      "adaptive_better_in": "7/20"
+    },
+    "m_co2_g_per_veh_vs_max_pressure": {
+      "mean": -0.0006,
+      "ci95": 0.0085,
+      "adaptive_better_in": "9/20"
     }
   },
   {
@@ -267,6 +367,26 @@
       "mean": 0.1254,
       "ci95": 0.0298,
       "adaptive_better_in": "19/20"
+    },
+    "m_veh_delay_mean_s_vs_max_pressure": {
+      "mean": -0.01,
+      "ci95": 0.0188,
+      "adaptive_better_in": "8/20"
+    },
+    "m_veh_wait_mean_s_vs_max_pressure": {
+      "mean": -0.0216,
+      "ci95": 0.0456,
+      "adaptive_better_in": "7/20"
+    },
+    "m_ped_wait_mean_s_vs_max_pressure": {
+      "mean": -0.458,
+      "ci95": 0.5593,
+      "adaptive_better_in": "10/20"
+    },
+    "m_co2_g_per_veh_vs_max_pressure": {
+      "mean": -0.0109,
+      "ci95": 0.0222,
+      "adaptive_better_in": "7/20"
     }
   },
   {
@@ -312,6 +432,26 @@
       "mean": 0.0851,
       "ci95": 0.0193,
       "adaptive_better_in": "19/20"
+    },
+    "m_veh_delay_mean_s_vs_max_pressure": {
+      "mean": -0.0527,
+      "ci95": 0.0529,
+      "adaptive_better_in": "5/20"
+    },
+    "m_veh_wait_mean_s_vs_max_pressure": {
+      "mean": 0.0085,
+      "ci95": 0.0611,
+      "adaptive_better_in": "9/20"
+    },
+    "m_ped_wait_mean_s_vs_max_pressure": {
+      "mean": 0.1753,
+      "ci95": 0.1255,
+      "adaptive_better_in": "18/20"
+    },
+    "m_co2_g_per_veh_vs_max_pressure": {
+      "mean": 0.0058,
+      "ci95": 0.0201,
+      "adaptive_better_in": "10/20"
     }
   },
   {
@@ -356,6 +496,26 @@
     "m_co2_g_per_veh_vs_actuated": {
       "mean": 0.0729,
       "ci95": 0.0172,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_delay_mean_s_vs_max_pressure": {
+      "mean": 0.2797,
+      "ci95": 0.0246,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_wait_mean_s_vs_max_pressure": {
+      "mean": 0.33,
+      "ci95": 0.0306,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_max_pressure": {
+      "mean": 0.0062,
+      "ci95": 0.0391,
+      "adaptive_better_in": "11/20"
+    },
+    "m_co2_g_per_veh_vs_max_pressure": {
+      "mean": 0.1519,
+      "ci95": 0.0134,
       "adaptive_better_in": "20/20"
     }
   },
@@ -402,6 +562,26 @@
       "mean": 0.0502,
       "ci95": 0.0125,
       "adaptive_better_in": "20/20"
+    },
+    "m_veh_delay_mean_s_vs_max_pressure": {
+      "mean": 0.4411,
+      "ci95": 0.0178,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_wait_mean_s_vs_max_pressure": {
+      "mean": 0.5325,
+      "ci95": 0.0187,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_max_pressure": {
+      "mean": -0.1262,
+      "ci95": 0.033,
+      "adaptive_better_in": "0/20"
+    },
+    "m_co2_g_per_veh_vs_max_pressure": {
+      "mean": 0.2375,
+      "ci95": 0.0117,
+      "adaptive_better_in": "20/20"
     }
   },
   {
@@ -447,6 +627,26 @@
       "mean": 0.0364,
       "ci95": 0.0109,
       "adaptive_better_in": "19/20"
+    },
+    "m_veh_delay_mean_s_vs_max_pressure": {
+      "mean": 0.5601,
+      "ci95": 0.0213,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_wait_mean_s_vs_max_pressure": {
+      "mean": 0.6223,
+      "ci95": 0.0104,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_max_pressure": {
+      "mean": -0.2477,
+      "ci95": 0.0376,
+      "adaptive_better_in": "0/20"
+    },
+    "m_co2_g_per_veh_vs_max_pressure": {
+      "mean": 0.253,
+      "ci95": 0.006,
+      "adaptive_better_in": "20/20"
     }
   },
   {
@@ -491,6 +691,26 @@
     "m_co2_g_per_veh_vs_actuated": {
       "mean": 0.1517,
       "ci95": 0.0094,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_delay_mean_s_vs_max_pressure": {
+      "mean": 0.9385,
+      "ci95": 0.0108,
+      "adaptive_better_in": "20/20"
+    },
+    "m_veh_wait_mean_s_vs_max_pressure": {
+      "mean": 0.7726,
+      "ci95": 0.0072,
+      "adaptive_better_in": "20/20"
+    },
+    "m_ped_wait_mean_s_vs_max_pressure": {
+      "mean": -0.9075,
+      "ci95": 0.0826,
+      "adaptive_better_in": "0/20"
+    },
+    "m_co2_g_per_veh_vs_max_pressure": {
+      "mean": 0.3381,
+      "ci95": 0.0066,
       "adaptive_better_in": "20/20"
     }
   }

@@ -82,3 +82,23 @@ def phase_pressure(lanes: list[tuple[int, float, float, float]],
     veh = sum(vehicle_pressure(n, lam, mu, w) for n, lam, mu, w in lanes)
     ped = sum(pedestrian_pressure(n, t, weights) for n, t in crossings)
     return s_k * (veh + ped)
+
+
+def max_pressure(lanes: list[tuple[int, list[int]]], crossings: list[int]) -> float:
+    """Max-pressure of one phase (Varaiya 2013), used as a baseline.
+
+        P_k = sum_{i in C_k} (N_i - mean_{o in out(i)} N_o) + sum_{j in V_k} Nv_j
+
+    lanes:     (N_i, [N_o for every lane o that lane i feeds]) for every lane
+               served by the phase.  Each approach has one shared lane, so the
+               lane-level form is used and the downstream queue is averaged
+               over the lanes it can turn into.
+    crossings: Nv_j, pedestrians waiting at every crossing served by the phase.
+
+    Varaiya weights each term by the saturation flow mu.  Every lane here has
+    the same mu, so that factor does not change the argmax and is left out;
+    vehicles and pedestrians are then counted in the same unit (road users
+    waiting).
+    """
+    veh = sum(n_in - (sum(outs) / len(outs) if outs else 0.0) for n_in, outs in lanes)
+    return veh + sum(crossings)

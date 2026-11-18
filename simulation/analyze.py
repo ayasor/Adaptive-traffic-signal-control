@@ -26,11 +26,12 @@ import matplotlib.ticker  # noqa: E402
 
 RESULTS = Path(__file__).resolve().parent / "results"
 FIG = RESULTS / "figures"
-CONTROLLERS = ("fixed", "actuated", "adaptive")
+CONTROLLERS = ("fixed", "actuated", "max_pressure", "adaptive")
 LABEL = {"fixed": "Fixed-time (Webster)", "actuated": "Actuated (SUMO)",
-         "adaptive": "Adaptive (phase pressure)"}
-COLOR = {"fixed": "#2a78d6", "actuated": "#eb6834", "adaptive": "#1baf7a"}
-MARKER = {"fixed": "s", "actuated": "^", "adaptive": "o"}
+         "max_pressure": "Max-pressure (Varaiya)", "adaptive": "Adaptive (phase pressure)"}
+COLOR = {"fixed": "#2a78d6", "actuated": "#eb6834", "max_pressure": "#8e5cc7",
+         "adaptive": "#1baf7a"}
+MARKER = {"fixed": "s", "actuated": "^", "max_pressure": "D", "adaptive": "o"}
 METRICS = {
     "veh_delay_mean_s": "Mean vehicle delay [s]",
     "veh_wait_mean_s": "Mean vehicle waiting time [s]",
@@ -98,7 +99,7 @@ def main() -> None:
             continue
         by_seed = {r["seed"]: r for r in g}
         entry = {"scenario": scn, "variant": var, "veh_scale": scale}
-        for base in ("fixed", "actuated"):
+        for base in ("fixed", "actuated", "max_pressure"):
             b = {r["seed"]: r for r in groups.get((scn, var, scale, base), [])}
             seeds = sorted(set(by_seed) & set(b))
             for m in ("veh_delay_mean_s", "veh_wait_mean_s", "ped_wait_mean_s", "co2_g_per_veh"):
@@ -160,7 +161,7 @@ def plot_sweeps(groups) -> None:
         fig.suptitle(f"{title}: mean of 20 seeds, shaded band = 95 % confidence interval",
                      fontsize=11, y=0.99, x=0.01, ha="left")
         fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 0.955),
-                   ncol=3, frameon=False, fontsize=9)
+                   ncol=len(CONTROLLERS), frameon=False, fontsize=9)
         fig.tight_layout(rect=(0, 0, 1, 0.925))
         fig.savefig(FIG / f"{scn}_demand_sweep.png", dpi=200)
         plt.close(fig)
@@ -187,7 +188,7 @@ def plot_unbalanced(groups) -> None:
     fig.suptitle("Shibuya-type intersection, unbalanced demand: mean of 20 seeds, "
                  "error bar = 95 % CI", fontsize=11, y=0.99, x=0.01, ha="left")
     fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 0.95),
-               ncol=3, frameon=False, fontsize=9)
+               ncol=len(CONTROLLERS), frameon=False, fontsize=9)
     fig.tight_layout(rect=(0, 0, 1, 0.9))
     fig.savefig(FIG / "shibuya_unbalanced.png", dpi=200)
     plt.close(fig)

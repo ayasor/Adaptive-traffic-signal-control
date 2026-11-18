@@ -27,12 +27,13 @@ from atsc.runner import RunSpec, load_mu, run
 HERE = Path(__file__).resolve().parent
 RESULTS = HERE / "results"
 MU_FILE = RESULTS / "saturation_flow.json"
-CONTROLLERS = ("fixed", "actuated", "adaptive")
+CONTROLLERS = ("fixed", "actuated", "adaptive", "max_pressure")
 # Parameters selected by tune.py on the tuning seeds (see results/tuning_summary.json)
 TUNED = {
     "fixed": {},
     "actuated": {"t_max": 40},
     "adaptive": {"t_max": 90, "t_crit": 90.0, "ped_scale": 1.0},
+    "max_pressure": {"t_max": 60},
 }
 DEMAND = {   # vehicle demand as a fraction of the original thesis demand
     "simple": (0.25, 0.5, 0.75, 1.0),

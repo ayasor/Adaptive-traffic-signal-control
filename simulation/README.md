@@ -32,6 +32,7 @@ that are already there, so it can be interrupted and resumed.
 | `atsc/scenarios.py` | Phases, lanes and crossings of each intersection; safe transitions; demand scaling |
 | `atsc/adaptive.py` | Adaptive controller (TraCI): sensors, pressure, control policy |
 | `atsc/programs.py` | Baselines: Webster fixed-time plan and SUMO actuated program |
+| `atsc/max_pressure.py` | Baseline: max-pressure controller (Varaiya 2013) on the same sensors and transitions |
 | `atsc/conflict_graph.py` | Conflict graph of a junction: independent sets and chromatic number |
 | `atsc/runner.py` | Runs one simulation and computes the metrics from SUMO's tripinfo output |
 | `scenarios/` | SUMO networks and route templates of both intersections |
@@ -73,8 +74,12 @@ controller activates `argmax_k P_k` subject to `T_min ≤ T_green ≤ T_max`.
    ≈ 0.49 veh/s (≈ 1,780 veh/h per lane).
 6. **Metrics.** All controllers are measured with the same code, from SUMO's
    `tripinfo` output.
-7. **Baselines.** A Webster fixed-time plan and SUMO's actuated controller,
-   with the same phases and transitions as the adaptive controller.
+7. **Baselines.** A Webster fixed-time plan, SUMO's actuated controller and
+   a max-pressure controller (Varaiya 2013), all with the same phases and
+   transitions as the adaptive controller. Max-pressure activates
+   `argmax_k Σ_{i∈C_k} (N_i − N_out(i)) + Σ_{j∈V_k} Nv_j` at the end of
+   every 10 s slot (waiting pedestrians count as queued road users); its
+   maximum green is tuned with `tune.py` like the actuated controller's.
 8. **Statistics.** 20 seeds per case, 95 % confidence intervals, paired
    comparisons, and a sweep over demand levels.
 

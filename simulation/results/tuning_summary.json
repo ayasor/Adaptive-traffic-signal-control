@@ -26,6 +26,19 @@
         "shibuya@1": 0.9860522683848219
       },
       "mean_relative_J": 2.2553681812403568
+    },
+    "max_pressure": {
+      "controller": "max_pressure",
+      "t_max": 60,
+      "t_crit": null,
+      "ped_scale": null,
+      "relative_J": {
+        "simple@0.5": 1.540920842571259,
+        "simple@1": 8.843629712604816,
+        "shibuya@0.3": 1.170601251919839,
+        "shibuya@1": 0.8797930021749795
+      },
+      "mean_relative_J": 3.1087362023177234
     }
   },
   "all": [
@@ -1044,6 +1057,45 @@
       "mean_relative_J": 2.774787533223983
     },
     {
+      "controller": "max_pressure",
+      "t_max": 60,
+      "t_crit": null,
+      "ped_scale": null,
+      "relative_J": {
+        "simple@0.5": 1.540920842571259,
+        "simple@1": 8.843629712604816,
+        "shibuya@0.3": 1.170601251919839,
+        "shibuya@1": 0.8797930021749795
+      },
+      "mean_relative_J": 3.1087362023177234
+    },
+    {
+      "controller": "max_pressure",
+      "t_max": 90,
+      "t_crit": null,
+      "ped_scale": null,
+      "relative_J": {
+        "simple@0.5": 1.540920842571259,
+        "simple@1": 9.036616515668744,
+        "shibuya@0.3": 1.170601251919839,
+        "shibuya@1": 0.8797930021749795
+      },
+      "mean_relative_J": 3.1569829030837053
+    },
+    {
+      "controller": "max_pressure",
+      "t_max": 120,
+      "t_crit": null,
+      "ped_scale": null,
+      "relative_J": {
+        "simple@0.5": 1.540920842571259,
+        "simple@1": 9.036616515668744,
+        "shibuya@0.3": 1.170601251919839,
+        "shibuya@1": 0.8797930021749795
+      },
+      "mean_relative_J": 3.1569829030837053
+    },
+    {
       "controller": "actuated",
       "t_max": 90,
       "t_crit": null,
@@ -1055,6 +1107,32 @@
         "shibuya@1": 1.0169704818220142
       },
       "mean_relative_J": 3.2114620298905066
+    },
+    {
+      "controller": "max_pressure",
+      "t_max": 30,
+      "t_crit": null,
+      "ped_scale": null,
+      "relative_J": {
+        "simple@0.5": 1.560098214739212,
+        "simple@1": 11.869132774877514,
+        "shibuya@0.3": 1.051759464387007,
+        "shibuya@1": 0.8797930021749795
+      },
+      "mean_relative_J": 3.840195864044678
+    },
+    {
+      "controller": "max_pressure",
+      "t_max": 40,
+      "t_crit": null,
+      "ped_scale": null,
+      "relative_J": {
+        "simple@0.5": 1.5898450089851275,
+        "simple@1": 11.520005863031981,
+        "shibuya@0.3": 1.4261042890646252,
+        "shibuya@1": 0.8797930021749795
+      },
+      "mean_relative_J": 3.8539370408141784
     },
     {
       "controller": "actuated",

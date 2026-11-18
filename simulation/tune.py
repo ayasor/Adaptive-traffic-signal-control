@@ -1,4 +1,4 @@
-"""Calibrate the free parameters of the adaptive and actuated controllers.
+"""Calibrate the free parameters of the adaptive, actuated and max-pressure controllers.
 
 The original thesis fixed T_max, T_crit and the pedestrian weights by hand.
 Here they are chosen with a grid search, using *tuning seeds* (101-103) that
@@ -49,6 +49,7 @@ def specs() -> list[RunSpec]:
         out.append(RunSpec(scn, "fixed", seed, scale))
         for t_max in T_MAX:
             out.append(RunSpec(scn, "actuated", seed, scale, t_max=t_max))
+            out.append(RunSpec(scn, "max_pressure", seed, scale, t_max=t_max))
             for t_crit, ps in itertools.product(T_CRIT, PED_SCALE):
                 out.append(RunSpec(scn, "adaptive", seed, scale, t_max=t_max,
                                    t_crit=t_crit, ped_scale=ps))
@@ -87,8 +88,8 @@ def summarise(results: list[dict]) -> dict:
         if r["controller"] == "fixed":
             continue
         params = (r["controller"], r["t_max"], r["t_crit"], r["ped_scale"])
-        if r["controller"] == "actuated":
-            params = ("actuated", r["t_max"], None, None)
+        if r["controller"] in ("actuated", "max_pressure"):
+            params = (r["controller"], r["t_max"], None, None)
         case = (r["scenario"], r["veh_scale"])
         scores[params][case].append(person_delay(r) / base_j[case])
 
@@ -99,7 +100,9 @@ def summarise(results: list[dict]) -> dict:
                       "ped_scale": params[3], "relative_J": rel,
                       "mean_relative_J": statistics.fmean(rel.values())})
     table.sort(key=lambda d: d["mean_relative_J"])
-    best = {c: next(d for d in table if d["controller"] == c) for c in ("adaptive", "actuated")}
+    best = {c: next(d for d in table if d["controller"] == c)
+            for c in ("adaptive", "actuated", "max_pressure")
+            if any(d["controller"] == c for d in table)}
     return {"objective": "person-delay relative to Webster fixed-time (lower is better)",
             "best": best, "all": table}
 
